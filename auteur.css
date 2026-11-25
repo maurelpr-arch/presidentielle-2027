@@ -1,0 +1,11 @@
+/* Encart du concepteur du site (photomaton + bio), posé directement sur le fond du site. */
+header.top{max-width:780px}
+.wrap{position:relative}
+.auteur{max-width:520px;margin:0 0 28px}
+.auteur::after{content:"";display:block;clear:both}
+.auteur img{float:left;width:270px;max-width:55%;height:auto;margin:0 14px 4px -6px;mix-blend-mode:multiply}
+.auteur .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:14px}
+.auteur h2{font-size:23px;margin:2px 0 8px}
+.auteur p{margin:0 0 8px;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.auteur p:last-child{margin-bottom:0}
+@media (min-width:1330px){.auteur{position:absolute;top:24px;right:20px;width:480px;margin:0}}
