@@ -185,6 +185,7 @@ header.top .changes b{font-weight:700}
 header.top .intro{font-size:16px}
 </style>
 <link rel="stylesheet" href="auteur.css">
+<link rel="stylesheet" href="defiler.css">
 </head>
 <body>
 <div class="wrap">
@@ -234,8 +235,10 @@ header.top .intro{font-size:16px}
 
     <aside class="col-right" aria-label="Cartes à retourner">
       <h2 class="section-h">Cartes à retourner</h2>
-      <p class="sub">Cliquez sur une carte pour la retourner.</p>
+      <p class="sub">Cliquez sur une carte pour la retourner. Faites défiler cette colonne pour voir toutes les cartes.</p>
       <div class="flips" id="flips"></div>
+      <div class="more" id="more" aria-hidden="true"><span>Plus de cartes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
     </aside>
   </div>
 
@@ -245,7 +248,13 @@ header.top .intro{font-size:16px}
   </footer>
 </div>
 
+<button type="button" class="scrollcue" id="scrollcue" aria-label="Faire défiler la page vers le bas">
+  <span>Faire défiler</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+
 <script src="donnees.js"></script>
 <script src="app.js"></script>
+<script src="defiler.js"></script>
 </body>
 </html>
