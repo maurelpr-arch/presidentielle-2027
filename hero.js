@@ -53,7 +53,7 @@
     var slide=el("div","hero-slide"+(s.q?" is-q":""));
     if(s.q){
       slide.appendChild(el("div","hero-bigq","?"));
-      var t=el("p","hero-qtext","Qui sera le prochain président ?");
+      var t=el("p","hero-qtext","Qui sera le prochain·e président·e ?");
       t.appendChild(el("small",null,"Réponse les 18 avril et 2 mai 2027"));
       slide.appendChild(t);
     }else{
