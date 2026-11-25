@@ -1,10 +1,23 @@
-/* Bandeau d'accueil sous le titre : la grande question et le défilé des candidats.
-   Rythme : 4 candidats, puis un « ? », et on recommence.
+/* En-tête, de haut en bas :
+   1. « Dernière mise à jour » (un peu à part), 2. la grande question sur toute la ligne,
+   3. le défilé des candidats, 4. « La présidentielle 2027 pour les nuls », puis l'édito.
+   Rythme du défilé : 4 candidats, puis un « ? », et on recommence.
    Le rond contient seulement la photo (cadre blanc tant qu'il n'y a pas de photo) ;
    le nom et le parti sont posés directement sur le fond du site. */
-header.top>.hero.hero{max-width:980px;margin:6px 0 8px}
-header.top .hero-q{font-size:clamp(30px,5.2vw,58px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+
+/* 1. Dernière mise à jour : séparée du reste */
+header.top>.majbox{margin-bottom:26px}
+
+/* 2. La question : sur une seule ligne, sur toute la largeur (retour à la ligne autorisé sur petits écrans) */
+header.top>.hero.hero{max-width:none;margin:0 0 10px}
+header.top .hero-q{font-size:clamp(24px,4vw,56px);line-height:1.1;margin:0 0 14px;letter-spacing:-.01em}
 .hero-qm{color:var(--accent)}
+@media (min-width:900px){header.top .hero-q{white-space:nowrap}}
+
+/* 4. Titre du site, sous l'animation */
+header.top>.eyebrow{margin-top:20px}
+
+/* 3. Le défilé */
 .hero-box{position:relative}
 .hero-stage{position:relative;display:flex;align-items:center;min-height:176px;padding:14px 4px 22px;overflow:hidden}
 .hero-slide{display:flex;align-items:center;gap:26px;width:100%;animation:hero-in .45s cubic-bezier(.2,.8,.2,1) both}
