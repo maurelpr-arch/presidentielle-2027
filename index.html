@@ -204,30 +204,13 @@ header.top .intro{font-size:16px}
     <a class="jump" href="#aujourdhui">Aller à aujourd’hui</a>
   </header>
 
-  <section class="afl" id="auteur" aria-label="Le concepteur du site">
-    <div class="afl-inner">
-      <div class="afl-face afl-front">
-        <button type="button" class="afl-btn" aria-expanded="false" aria-controls="auteur-verso">
-          <span class="afl-role">Le concepteur du site</span>
-          <span class="afl-name">Pierre Maurel</span>
-          <span class="afl-teaser">Électeur, sans parti ni appartenance politique.</span>
-          <span class="afl-hint">Retourner la carte</span>
-        </button>
-      </div>
-      <div class="afl-face afl-back" id="auteur-verso" role="region" aria-label="Pierre Maurel, concepteur du site">
-        <div class="afl-bar"><button type="button" class="afl-close">Retour</button></div>
-        <div class="afl-grid">
-          <div class="afl-text">
-            <div class="afl-role">Le concepteur du site</div>
-            <h2>Pierre Maurel</h2>
-            <p>Électeur français comme les autres, sans parti ni appartenance politique, habitant du 20e arrondissement de Paris. Consultant indépendant en communication et relations presse depuis 2011.</p>
-            <p>J’ai conçu ce site pour aider chacun à s’y retrouver dans la présidentielle de 2027, sans parti pris.</p>
-          </div>
-          <img src="pierre-maurel.jpg" alt="Portraits de Pierre Maurel, concepteur du site" width="640" height="677" onerror="this.remove()">
-        </div>
-      </div>
-    </div>
-  </section>
+  <aside class="auteur" aria-label="À propos du concepteur du site">
+    <img src="pierre-maurel.jpg" alt="Portraits de Pierre Maurel, concepteur du site" width="640" height="677" onerror="this.remove()">
+    <div class="role">Le concepteur du site</div>
+    <h2>Pierre Maurel</h2>
+    <p>Électeur français comme les autres, sans parti ni appartenance politique, habitant du 20e arrondissement de Paris. Consultant indépendant en communication et relations presse depuis 2011.</p>
+    <p>J’ai conçu ce site pour aider chacun à s’y retrouver dans la présidentielle de 2027, sans parti pris.</p>
+  </aside>
 
   <div class="layout">
     <main class="col-left">
@@ -264,6 +247,5 @@ header.top .intro{font-size:16px}
 
 <script src="donnees.js"></script>
 <script src="app.js"></script>
-<script src="auteur.js"></script>
 </body>
 </html>
