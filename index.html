@@ -178,6 +178,13 @@ footer.foot .links{display:flex;flex-wrap:wrap;gap:6px 18px}
 header.top .changes{font-size:14.5px;color:var(--ink)}
 header.top .changes b{font-weight:700}
 .changes ul{margin:2px 0 0;padding-left:20px}.changes li{margin-bottom:2px}
+.auteur{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 20px rgba(19,32,59,.10);max-width:420px;margin:0 0 28px}
+.auteur img{display:block;width:100%;height:auto;border-radius:8px}
+.auteur .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-top:2px}
+.auteur h2{font-size:21px}
+.auteur p{margin:0;font-size:14px;line-height:1.45;color:var(--ink)}
+.wrap{position:relative}
+@media (min-width:1240px){.auteur{position:absolute;top:32px;right:20px;width:300px;margin:0}}
 .edito{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:8px;padding:14px 18px;margin-top:4px}
 .edito h2{font-size:22px;margin-bottom:6px}
 .edito p{margin:0 0 8px;font-size:15.5px;color:var(--ink)}
@@ -202,6 +209,14 @@ header.top .intro{font-size:16px}
     <p class="intro">À gauche, la chronologie de septembre 2026 à juin 2027. À droite, des cartes à retourner : présidents, gouvernements, Assemblée, candidats, institutions et règles du jeu.</p>
     <a class="jump" href="#aujourdhui">Aller à aujourd’hui</a>
   </header>
+
+  <aside class="auteur" aria-label="À propos du concepteur du site">
+    <img src="pierre-maurel.jpg" alt="Portraits de Pierre Maurel, concepteur du site" width="640" height="677" onerror="this.remove()">
+    <div class="role">Le concepteur du site</div>
+    <h2>Pierre Maurel</h2>
+    <p>Électeur français comme les autres, sans parti ni appartenance politique, habitant du 20e arrondissement de Paris. Consultant indépendant en communication et relations presse depuis 2011.</p>
+    <p>J’ai conçu ce site pour aider chacun à s’y retrouver dans la présidentielle de 2027, sans parti pris.</p>
+  </aside>
 
   <div class="layout">
     <main class="col-left">
