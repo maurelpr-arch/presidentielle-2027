@@ -19,13 +19,14 @@ header.top>*:not(h1):not(.eyebrow){max-width:780px}
 .wrap{position:relative}
 
 /* Concepteur du site : petit photomaton à droite, fondu dans le fond du site,
-   avec un texte de présentation discret qui l'entoure. */
-.auteur{max-width:420px;margin:0 0 28px}
+   avec un texte de présentation discret qui l'entoure.
+   Une fine barre verticale à gauche, sur toute la hauteur de l'encart, le démarque (rien sur les autres côtés). */
+.auteur{max-width:420px;margin:0 0 28px;padding:4px 0 4px 14px;border-left:3px solid rgba(11,61,145,.32)}
 .auteur::after{content:"";display:block;clear:both}
 .auteur img{float:right;width:110px;max-width:34%;height:auto;margin:0 0 4px 12px;mix-blend-mode:multiply}
-.auteur .role{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:4px}
+.auteur .role{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:2px}
 .auteur h2{font-size:16px;margin:2px 0 4px}
 .auteur p{margin:0 0 5px;font-size:12px;line-height:1.45;color:var(--muted)}
 .auteur p:last-child{margin-bottom:0}
 /* À partir de 1180 px : l'encart se place à droite de l'en-tête (au lieu de dessous) */
-@media (min-width:1180px){.auteur{position:absolute;top:128px;right:20px;width:300px;max-width:none;margin:0}}
+@media (min-width:1180px){.auteur{position:absolute;top:172px;right:20px;width:310px;max-width:none;margin:0}}
