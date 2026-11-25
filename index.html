@@ -186,12 +186,27 @@ header.top .intro{font-size:16px}
 </style>
 <link rel="stylesheet" href="auteur.css">
 <link rel="stylesheet" href="defiler.css">
+<link rel="stylesheet" href="hero.css">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <div class="eyebrow">L’Agenda Politique</div>
     <h1>La présidentielle 2027 pour les nuls</h1>
+
+    <section class="hero" aria-labelledby="h-hero">
+      <h2 class="hero-q" id="h-hero">Qui sera le nouveau président de la République<span class="hero-qm"> ?</span></h2>
+      <div class="hero-box">
+        <div class="hero-stage" id="hero-stage" aria-hidden="true"></div>
+        <div class="hero-steps" id="hero-steps" aria-hidden="true"></div>
+      </div>
+      <p class="sr-only">Animation : les candidatures annoncées défilent une à une, dans un ordre aléatoire, sans mise en avant. La liste complète est dans la carte « Les courants politiques des candidats ».</p>
+      <div class="hero-ctl">
+        <button type="button" id="hero-play" aria-label="Mettre en pause ou relancer le défilé des candidats">Pause</button>
+        <button type="button" id="hero-next">Candidat suivant</button>
+      </div>
+    </section>
+
     <div class="majbox" id="majbox">
       <p class="maj">Dernière mise à jour : <time id="maj" datetime="2026-11-25T18:07+01:00">mercredi 25 novembre 2026, 18 h 07</time> · actualisé chaque matin</p>
       <div class="changes"><b>Ce qui a changé :</b><div id="changes">Mise en place de la mise à jour quotidienne et nouvelle apparence du site.</div></div>
@@ -257,5 +272,6 @@ header.top .intro{font-size:16px}
 <script src="donnees.js"></script>
 <script src="app.js"></script>
 <script src="defiler.js"></script>
+<script src="hero.js"></script>
 </body>
 </html>
