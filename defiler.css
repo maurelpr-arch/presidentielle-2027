@@ -1,0 +1,58 @@
+/* Repères visuels de défilement.
+   1. Flèche flottante « Faire défiler » en bas de l'écran, tant qu'on est en haut de page.
+   2. Trait vertical entre les deux colonnes + libellés de colonne.
+   3. Colonne de droite (qui défile séparément) : barre de défilement visible et dégradé « Plus de cartes ». */
+
+/* 1. Flèche flottante */
+.scrollcue{
+  position:fixed;left:50%;bottom:18px;z-index:30;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:9px 18px 7px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--ink);color:#fff;font:600 13px/1.2 var(--body);letter-spacing:.02em;
+  box-shadow:0 6px 18px rgba(19,32,59,.35);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.scrollcue svg{width:20px;height:20px;animation:cue-bounce 1.4s ease-in-out infinite}
+.scrollcue:hover{background:var(--accent)}
+.scrollcue.is-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(12px)}
+@keyframes cue-bounce{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+
+/* 2. Deux colonnes bien distinctes */
+.col-left::before,.col-right::before{
+  display:block;font:700 12px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:-18px;
+}
+.col-left::before{content:"Colonne de gauche · la chronologie défile avec la page ↓"}
+.col-right::before{content:"Colonne de droite · à parcourir ↓";margin-bottom:6px}
+.col-right{
+  border-left:2px solid rgba(19,32,59,.18);padding-left:20px;
+  scrollbar-width:thin;scrollbar-color:var(--accent) rgba(19,32,59,.12);
+}
+.col-right::-webkit-scrollbar{width:10px}
+.col-right::-webkit-scrollbar-track{background:rgba(19,32,59,.10);border-radius:6px}
+.col-right::-webkit-scrollbar-thumb{background:var(--accent);border-radius:6px;border:2px solid transparent;background-clip:content-box}
+
+/* 3. « Plus de cartes » collé en bas de la colonne de droite */
+.more{
+  position:sticky;bottom:0;height:56px;margin-top:-56px;pointer-events:none;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;
+  background:linear-gradient(to bottom,rgba(251,241,236,0),rgba(251,241,236,.96) 75%);
+  transition:opacity .25s ease;
+}
+.more span{
+  display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;
+  font:600 12.5px/1 var(--body);padding:6px 12px;border-radius:999px;
+}
+.more svg{width:14px;height:14px;animation:cue-bounce 1.4s ease-in-out infinite}
+.more.is-hidden{opacity:0}
+
+@media (max-width:1000px){
+  /* une seule colonne : plus de défilement séparé */
+  .col-left::before,.col-right::before{content:none}
+  .col-right{border-left:0;padding-left:0}
+  .more{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .scrollcue svg,.more svg{animation:none}
+  .scrollcue,.more{transition:none}
+}
