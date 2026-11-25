@@ -23,10 +23,11 @@ header.top>.edito-row.edito-row{max-width:none;display:flex;align-items:flex-sta
 .edito-row .edito{flex:1 1 0;min-width:0;max-width:780px;margin:0;background:transparent;border:0;border-left:4px solid var(--accent);border-radius:0;padding:2px 0 2px 16px}
 
 /* « Un site d'électeur, pour les électeurs » : titre plus grand ; les deux paragraphes ont la police
-   et la taille du texte d'introduction (« À gauche, la chronologie… »). */
-.edito h2{font-size:27px;line-height:1.15;margin:0 0 8px}
-.edito p,.edito p:last-child{font-size:16px;line-height:1.5;color:var(--muted);margin:0 0 8px}
-.edito p:last-child{margin-bottom:0}
+   et la taille du texte d'introduction (« À gauche, la chronologie… »).
+   Les sélecteurs commencent par « header.top » pour l'emporter sur la règle générale « header.top p ». */
+header.top .edito h2{font-size:27px;line-height:1.15;margin:0 0 8px}
+header.top .edito p,header.top .edito p:last-child{font-size:16px;line-height:1.5;color:var(--muted);margin:0 0 8px}
+header.top .edito p:last-child{margin-bottom:0}
 
 /* Concepteur du site : même présentation que l'édito (barre bleue verticale à gauche, texte à la même couleur),
    en un peu plus petit, avec le photomaton à droite fondu dans le fond du site. */
@@ -35,8 +36,8 @@ header.top>.edito-row.edito-row{max-width:none;display:flex;align-items:flex-sta
 .auteur img{float:right;width:130px;max-width:36%;height:auto;margin:0 0 6px 14px;mix-blend-mode:multiply}
 .auteur .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:3px}
 .auteur h2{font-size:21px;line-height:1.15;margin:2px 0 6px}
-.auteur p{margin:0 0 7px;font-size:14px;line-height:1.5;color:var(--muted)}
-.auteur p:last-child{margin-bottom:0}
+header.top .auteur p,header.top .auteur p:last-child{margin:0 0 7px;font-size:14px;line-height:1.5;color:var(--muted)}
+header.top .auteur p:last-child{margin-bottom:0}
 
 /* Écrans étroits : le concepteur passe sous l'édito */
 @media (max-width:1179px){
