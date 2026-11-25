@@ -1,7 +1,8 @@
 /* Repères visuels de défilement.
    1. Flèche flottante « Faire défiler » en bas de l'écran, tant qu'on est en haut de page.
    2. Trait vertical entre les deux colonnes + libellés de colonne.
-   3. Colonne de droite (qui défile séparément) : barre de défilement visible et dégradé « Plus de cartes ». */
+   3. Colonne de droite (qui défile séparément) : barre de défilement visible et dégradé « Plus de cartes ».
+   4. Recto des cartes : le texte qui suit le chiffre est de la même couleur que le chiffre, en plus grand. */
 
 /* 1. Flèche flottante */
 .scrollcue{
@@ -36,7 +37,7 @@
 .more{
   position:sticky;bottom:0;height:56px;margin-top:-56px;pointer-events:none;
   display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;
-  background:linear-gradient(to bottom,rgba(251,241,236,0),rgba(251,241,236,.96) 75%);
+  background:linear-gradient(to bottom,rgba(237,239,251,0),rgba(237,239,251,.96) 75%);
   transition:opacity .25s ease;
 }
 .more span{
@@ -45,6 +46,17 @@
 }
 .more svg{width:14px;height:14px;animation:cue-bounce 1.4s ease-in-out infinite}
 .more.is-hidden{opacity:0}
+
+/* 4. Recto des cartes : le libellé qui suit le chiffre, lisible en entier.
+   Même couleur que le chiffre, plus grand, en minuscules (les majuscules espacées étaient plus larges et se lisaient mal).
+   La carte est un peu plus haute pour que le libellé puisse passer sur deux lignes sans rien couper. */
+.flip{height:244px}
+.figl{
+  color:var(--a);
+  font-size:15.5px;line-height:1.25;font-weight:700;
+  letter-spacing:0;text-transform:none;
+  margin-top:2px;
+}
 
 @media (max-width:1000px){
   /* une seule colonne : plus de défilement séparé */
