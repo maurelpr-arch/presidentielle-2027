@@ -1,6 +1,12 @@
 /* Bandeau d'accueil : défilé des candidats, un par un. Après chaque série de 4, une diapo « ? ».
    Les candidats viennent de CANDS (donnees.js), donc le défilé suit la mise à jour quotidienne.
-   Ordre aléatoire à chaque visite, même temps d'affichage pour tous : aucun candidat n'est mis en avant. */
+   Ordre aléatoire à chaque visite, même temps d'affichage pour tous : aucun candidat n'est mis en avant.
+
+   PHOTOS : le rond affiche seulement la photo. Pour en ajouter une, déposer le fichier dans le dossier photos/
+   sous le nom du candidat en minuscules, sans accents, avec des tirets, au format .jpg :
+   « Marine Le Pen » → photos/marine-le-pen.jpg ; « Jean-Luc Mélenchon » → photos/jean-luc-melenchon.jpg.
+   Sans fichier, le rond reste un cadre blanc. Aucune modification de code n'est nécessaire.
+   Mieux vaut des photos pour tous les candidats, ou pour aucun. */
 (function(){
   "use strict";
   var stage=document.getElementById("hero-stage");
@@ -9,26 +15,13 @@
   var btnNext=document.getElementById("hero-next");
   if(!stage||typeof CANDS==="undefined"||!CANDS.length)return;
 
-  /* Photos : pour afficher une photo à la place des initiales, déposer le fichier dans le dossier photos/
-     puis l'indiquer ici, par exemple  "marine-le-pen":"photos/marine-le-pen.jpg".
-     Mieux vaut des photos pour tous les candidats, ou pour aucun. */
-  var PHOTOS={};
-
+  var PHOTO_DIR="photos/",PHOTO_EXT=".jpg";
   var GROUP=4,T_CAND=1400,T_Q=1900;
   var colors={};
   (typeof COURANTS!=="undefined"?COURANTS:[]).forEach(function(c){colors[c.k]=c.color});
 
   function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
   function slug(n){return n.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
-  function initials(n){
-    var w=n.replace(/’/g,"'").split(/\s+/).filter(Boolean);
-    var last=w[w.length-1].replace(/^(d|l)'/i,"");
-    return ((w[0][0]||"")+(w.length>1?last[0]:"")).toUpperCase();
-  }
-  function textOn(hex){
-    var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
-    return (0.299*r+0.587*g+0.114*b)>150?"#13203B":"#FFFFFF";
-  }
   function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
 
   /* diapos : 4 candidats, un « ? », 4 candidats, un « ? »… */
@@ -55,10 +48,13 @@
       slide.appendChild(t);
     }else{
       var name=s.c[0],party=s.c[1],col=colors[s.c[2]]||"#A8A39A";
-      var av=el("div","hero-av",initials(name));
-      av.style.setProperty("--c",col);av.style.setProperty("--t",textOn(col));
-      var src=PHOTOS[slug(name)];
-      if(src){var img=document.createElement("img");img.alt="";img.src=src;img.onerror=function(){img.remove()};av.appendChild(img)}
+      var av=el("div","hero-av");               /* cadre blanc : seulement la photo, si elle existe */
+      av.style.setProperty("--c",col);
+      var img=document.createElement("img");
+      img.alt="";
+      img.onerror=function(){img.remove()};
+      img.src=PHOTO_DIR+slug(name)+PHOTO_EXT;
+      av.appendChild(img);
       var txt=el("div","hero-txt");
       txt.appendChild(el("div","hero-rank","Candidat "+s.n+" sur "+list.length));
       txt.appendChild(el("h3","hero-name",name));
