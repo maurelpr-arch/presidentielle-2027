@@ -1,0 +1,65 @@
+/* Bandeau d'accueil sous le titre : la grande question et le défilé des candidats.
+   Rythme : 4 candidats, puis un « ? », et on recommence. */
+header.top>.hero.hero{max-width:980px;margin:6px 0 8px}
+header.top .hero-q{font-size:clamp(30px,5.2vw,58px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+.hero-qm{color:var(--accent)}
+.hero-box{position:relative}
+.hero-stage{
+  position:relative;display:flex;align-items:center;min-height:176px;padding:18px 22px;
+  border:1px solid rgba(19,32,59,.14);border-radius:16px;overflow:hidden;
+  background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.hero-slide{display:flex;align-items:center;gap:22px;width:100%;animation:hero-in .45s cubic-bezier(.2,.8,.2,1) both}
+.hero-av{
+  position:relative;flex:none;width:124px;height:124px;border-radius:50%;
+  display:grid;place-items:center;overflow:hidden;
+  font:600 46px/1 var(--display);background:var(--c);color:var(--t);
+  box-shadow:0 0 0 4px #fff,0 0 0 6px var(--c);
+}
+.hero-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-txt{min-width:0}
+.hero-rank{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:6px}
+.hero-name{font:600 clamp(24px,3.4vw,38px)/1.1 var(--display);margin:0;overflow-wrap:anywhere}
+header.top .hero-party{margin:6px 0 0;font-size:16px;color:var(--muted)}
+
+/* Diapo « ? » */
+.hero-slide.is-q{justify-content:center;text-align:center;gap:28px}
+.hero-bigq{font:600 124px/1 var(--display);color:var(--accent);animation:hero-pop .7s ease both}
+header.top .hero-qtext{margin:0;font-size:18px;line-height:1.35;color:var(--ink);font-weight:600;max-width:320px;text-align:left}
+header.top .hero-qtext small{display:block;margin-top:4px;font-size:14px;font-weight:500;color:var(--muted)}
+
+/* Repère « 1 2 3 4 ? » */
+.hero-steps{position:absolute;right:16px;bottom:12px;display:flex;gap:6px}
+.hero-steps span{
+  width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+  font:700 12px/1 var(--body);color:var(--accent);background:rgba(11,61,145,.10);
+  transition:background .2s,color .2s,transform .2s;
+}
+.hero-steps span.on{background:var(--accent);color:#fff;transform:scale(1.15)}
+
+/* Commandes */
+.hero-ctl{display:flex;gap:8px;margin-top:8px}
+.hero-ctl button{
+  all:unset;cursor:pointer;box-sizing:border-box;font:600 13px/1 var(--body);
+  padding:7px 14px;border:1px solid var(--ink);border-radius:999px;color:var(--ink);
+}
+.hero-ctl button:hover{background:var(--ink);color:#fff}
+.hero-ctl button:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
+
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@keyframes hero-in{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
+@keyframes hero-pop{0%{transform:scale(.3) rotate(-12deg);opacity:0}60%{transform:scale(1.15) rotate(6deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+
+@media (max-width:560px){
+  .hero-stage{padding:14px 14px 40px;min-height:150px}
+  .hero-slide{gap:14px}
+  .hero-av{width:84px;height:84px;font-size:32px}
+  .hero-bigq{font-size:84px}
+  header.top .hero-party{font-size:14px}
+  header.top .hero-qtext{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-slide,.hero-bigq{animation:none}
+  .hero-steps span{transition:none}
+}
