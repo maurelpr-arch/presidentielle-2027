@@ -4,11 +4,45 @@ header.top>*:not(h1):not(.eyebrow){max-width:780px}
 .majbox{background:transparent;border:0;border-left:4px solid #2E8F6B;border-radius:0;padding:4px 0 4px 16px}
 .edito{background:transparent;border:0;border-left:4px solid var(--accent);border-radius:0;padding:4px 0 4px 16px}
 .wrap{position:relative}
-.auteur{max-width:520px;margin:0 0 28px}
-.auteur::after{content:"";display:block;clear:both}
-.auteur img{float:left;width:270px;max-width:55%;height:auto;margin:0 14px 4px -6px;mix-blend-mode:multiply}
-.auteur .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:14px}
+
+/* Signature : rectangle en format paysage.
+   Texte à gauche, carré avec les photos à droite. Le texte occupe toute la hauteur du carré :
+   le titre en haut, le dernier paragraphe calé en bas. */
+.auteur{
+  --s:280px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) var(--s);
+  grid-template-rows:auto auto auto 1fr;
+  column-gap:22px;
+  align-items:start;
+  max-width:720px;
+  margin:0 0 28px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+.auteur img{
+  grid-column:2;
+  grid-row:1 / -1;
+  width:var(--s);
+  height:var(--s);
+  object-fit:contain;
+  margin:0;
+  mix-blend-mode:multiply;
+}
+.auteur .role,.auteur h2,.auteur p{grid-column:1}
+.auteur .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:2px}
 .auteur h2{font-size:23px;margin:2px 0 8px}
 .auteur p{margin:0 0 8px;font-size:14.5px;line-height:1.5;color:var(--ink)}
-.auteur p:last-child{margin-bottom:0}
-@media (min-width:1330px){.auteur{position:absolute;top:150px;right:20px;width:480px;margin:0}}
+.auteur p:last-child{margin-bottom:0;align-self:end}
+
+/* Très large écran : la signature se pose à droite de l'en-tête */
+@media (min-width:1500px){
+  .auteur{--s:260px;position:absolute;top:150px;right:20px;width:600px;max-width:none;margin:0}
+}
+/* Mobile : le carré passe au-dessus du texte */
+@media (max-width:560px){
+  .auteur{grid-template-columns:minmax(0,1fr);grid-template-rows:none;--s:min(280px,100%)}
+  .auteur img{grid-column:1;grid-row:auto;justify-self:center;margin-bottom:8px}
+  .auteur p:last-child{align-self:start}
+}
