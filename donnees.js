@@ -34,7 +34,7 @@ E("10–13 déc.","parti","Les Écologistes consultent leurs adhérents","Réfé
 E("Déc. – fév.","cand","Décision attendue de François Hollande","Elle a été repoussée : décembre selon une source, fin janvier ou début février selon une autre.",{re:1}),
 M("Janvier 2027"),
 E("Janvier","parti","Primaire à droite et au centre (date non fixée)","Prévue par l’accord de principe du 17 novembre, à confirmer.",{re:1}),
-E("Début janv.","inst","Marine Le Pen : échéance judiciaire possible","Condamnée en appel le 7 juillet 2026 à 15 mois ferme d’inéligibilité, déjà purgés, elle est éligible. Selon La Libre, une décision de la Cour de cassation tomberait début janvier au plus tard.",{re:1}),
+E("Début janv.","inst","Marine Le Pen : échéance judiciaire possible","Condamnée en appel le 7 juillet 2026 à 15 mois ferme d’inéligibilité, déjà purgés, elle est éligible. Selon La Libre Belgique, une décision de la Cour de cassation tomberait début janvier au plus tard.",{re:1}),
 M("Février 2027"),
 E("7 fév. au plus tard","inst","Décret de convocation des électeurs","Publié au moins dix semaines avant le premier tour. Il ouvre la période de recueil des parrainages.",{major:1}),
 M("Mars 2027"),
