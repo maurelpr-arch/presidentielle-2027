@@ -1,3 +1,16 @@
+/* Fond du site : dégradé doux, surtout bleu et violet, avec une touche de rose fuchsia dans l'angle en haut à gauche. */
+:root{--bg:#EDEFFB}
+body{
+  background-color:#EDEFFB;
+  background-image:
+    radial-gradient(1000px 700px at 0% 0%,rgba(226,92,187,.30) 0%,rgba(226,92,187,0) 68%),
+    radial-gradient(1300px 900px at 100% 0%,rgba(139,108,240,.38) 0%,rgba(139,108,240,0) 70%),
+    radial-gradient(1300px 950px at 0% 100%,rgba(88,140,244,.38) 0%,rgba(88,140,244,0) 70%),
+    radial-gradient(1200px 900px at 100% 100%,rgba(112,86,226,.34) 0%,rgba(112,86,226,0) 70%),
+    radial-gradient(900px 700px at 50% 45%,rgba(160,150,248,.22) 0%,rgba(160,150,248,0) 75%),
+    linear-gradient(160deg,#EEF2FF 0%,#EAE6FC 50%,#E1E8FD 100%);
+}
+
 /* Habillage de l'en-tête : encarts posés sur le fond du site (sans cases blanches) et mention discrète du concepteur (photomaton + bio). */
 header.top{max-width:none}
 header.top>*:not(h1):not(.eyebrow){max-width:780px}
@@ -7,11 +20,12 @@ header.top>*:not(h1):not(.eyebrow){max-width:780px}
 
 /* Concepteur du site : petit photomaton à droite, fondu dans le fond du site,
    avec un texte de présentation discret qui l'entoure. */
-.auteur{max-width:520px;margin:0 0 28px}
+.auteur{max-width:420px;margin:0 0 28px}
 .auteur::after{content:"";display:block;clear:both}
-.auteur img{float:right;width:150px;max-width:38%;height:auto;margin:0 0 6px 16px;mix-blend-mode:multiply}
-.auteur .role{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:6px}
-.auteur h2{font-size:18px;margin:2px 0 6px}
-.auteur p{margin:0 0 6px;font-size:13px;line-height:1.5;color:var(--muted)}
+.auteur img{float:right;width:110px;max-width:34%;height:auto;margin:0 0 4px 12px;mix-blend-mode:multiply}
+.auteur .role{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:4px}
+.auteur h2{font-size:16px;margin:2px 0 4px}
+.auteur p{margin:0 0 5px;font-size:12px;line-height:1.45;color:var(--muted)}
 .auteur p:last-child{margin-bottom:0}
-@media (min-width:1330px){.auteur{position:absolute;top:150px;right:20px;width:400px;margin:0}}
+/* À partir de 1180 px : l'encart se place à droite de l'en-tête (au lieu de dessous) */
+@media (min-width:1180px){.auteur{position:absolute;top:128px;right:20px;width:300px;max-width:none;margin:0}}
