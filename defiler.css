@@ -69,23 +69,40 @@
   .scrollcue,.more{transition:none}
 }
 
-/* ===== Thème « fond blanc, encadrés colorés » (inversé) =====
+/* ===== Thème « fond blanc, encadrés bleu-gris pâle » =====
    Le fond du site est blanc.
-   Les encadrés, autrefois blancs, prennent un fond très pâle (rose, violet, bleu) : le texte reste bien lisible.
-   Les éléments qui étaient pâles à l'intérieur des encadrés passent en blanc. */
+   Les encadrés (autrefois blancs) ont un fond uniforme bleu métallique très pâle, froid et légèrement grisé : le texte reste bien lisible.
+   Les éléments qui étaient pâles à l'intérieur des encadrés sont en blanc. */
 :root{
   --bg:#FFFFFF;
-  --card:linear-gradient(135deg,#FCEDF3 0%,#F2EEFD 52%,#E9F1FE 100%);
-  --line:#D8D2E4;
+  --card:#E7EDF4;
+  --line:#C6D0DC;
   --cream:#FFFFFF;
 }
-html body{background-color:var(--bg);background-image:none}
+html body{background-color:var(--bg);background-image:none;overflow-x:clip}
 .stat{background:var(--cream)}
 .bar,.ref .meter{background:var(--cream)}
 .lg:hover,.lg.on{background:var(--cream)}
 .maj time{background:var(--cream)}
-.donut .seg{stroke:#F6F1FC}
+.donut .seg{stroke:#E7EDF4}
 /* rond des candidats : liseré blanc, comme le fond */
 html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c),0 8px 20px rgba(19,32,59,.15)}
 /* « Plus de cartes » : dégradé aux couleurs du fond */
 .more{background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.96) 75%)}
+
+/* ===== Bandeau « Dernière mise à jour » : toute la largeur de la page, en petit, tout en haut ===== */
+html body .wrap{padding-top:0}
+html body header.top>.majbox{
+  box-sizing:border-box;position:relative;left:50%;width:100vw;max-width:none;
+  margin:0 0 26px -50vw;
+  padding:7px max(20px,calc((100vw - 1400px)/2 + 20px));
+  background:var(--card);border:0;border-bottom:1px solid var(--line);border-radius:0;
+  display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:2px 28px;
+}
+html body header.top .majbox .maj{margin:0;font-size:12.5px;font-weight:600;color:var(--ink);flex:0 1 auto;max-width:100%}
+html body header.top .majbox .maj time{font-weight:600;padding:0 6px}
+html body header.top .majbox .changes{font-size:12.5px;line-height:1.4;color:var(--muted);flex:1 1 360px;min-width:0}
+html body header.top .majbox .changes b{font-weight:700;color:var(--ink);margin-right:6px}
+html body header.top .majbox .changes>div{display:inline}
+html body header.top .majbox .changes ul{display:inline-block;vertical-align:top;margin:0;padding-left:16px}
+html body header.top .majbox .changes li{margin:0 0 1px}
