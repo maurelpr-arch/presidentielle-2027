@@ -198,6 +198,23 @@ html body header.top>#majbox .maj-logo{grid-column:1;grid-row:1/span 2;align-sel
 html body header.top>#majbox .maj{grid-column:2}
 html body header.top>#majbox .changes{grid-column:2}
 @media (max-width:560px){html body header.top>#majbox .maj-logo{width:36px;height:36px}}
+
+/* Pied de page noir, sur toute la largeur de la page : texte blanc, logo blanc à gauche, texte à sa droite. */
+html body .wrap{padding-bottom:0}
+html body footer.foot{
+  box-sizing:border-box;position:relative;left:50%;width:100vw;max-width:none;
+  margin:48px 0 0 -50vw;border:0;
+  padding:26px max(20px,calc((100vw - 1400px)/2 + 20px));
+  background:#000;color:#fff;
+  display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:22px;row-gap:10px;align-items:center;
+}
+html body footer.foot .foot-logo{grid-column:1;grid-row:1/span 2;align-self:center;width:84px;height:84px;display:block}
+html body footer.foot>div{grid-column:2;color:#fff}
+html body footer.foot a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+@media (max-width:560px){
+  html body footer.foot{column-gap:14px}
+  html body footer.foot .foot-logo{width:56px;height:56px}
+}
 </style>
 <link rel="stylesheet" href="auteur.css">
 <link rel="stylesheet" href="defiler.css">
@@ -231,7 +248,7 @@ html body header.top>#majbox .changes{grid-column:2}
       </div>
     </section>
 
-    <div class="eyebrow"><img src="logo.svg" alt="" width="34" height="34" style="width:34px;height:34px;vertical-align:middle;margin:-4px 10px 0 0">L’Agenda Politique</div>
+    <div class="eyebrow">L’Agenda Politique</div>
     <h1>La présidentielle 2027 pour les nuls</h1>
 
     <div class="edito-row">
@@ -282,7 +299,7 @@ html body header.top>#majbox .changes{grid-column:2}
   </div>
 
   <footer class="foot">
-    <img src="logo.svg" alt="" width="56" height="56" style="width:56px;height:56px;opacity:.85">
+    <img class="foot-logo" src="logo-blanc.svg" alt="" width="84" height="84">
     <div>Les dates de candidature viennent surtout de sites qui compilent l’actualité ; celles marquées « à recouper » ne reposent que sur une source. Le classement des candidats par courant est indicatif et établi à partir des étiquettes des partis.</div>
     <div class="links" id="sources"></div>
   </footer>
