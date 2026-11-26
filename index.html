@@ -190,6 +190,14 @@ header.top .intro{font-size:16px}
 .hero-top .hero-text{flex:1 1 auto;min-width:0}
 .hero-top .hero-logo{flex:none;width:clamp(150px,17vw,250px);height:auto;margin:-2px 0 0}
 @media (max-width:760px){.hero-top .hero-logo{display:none}}
+
+/* Bandeau noir : logo blanc à gauche, centré en hauteur, texte à sa droite.
+   « #majbox » dans le sélecteur pour l'emporter sur les règles de defiler.css. */
+html body header.top>#majbox{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;row-gap:3px;align-items:center}
+html body header.top>#majbox .maj-logo{grid-column:1;grid-row:1/span 2;align-self:center;width:46px;height:46px;display:block}
+html body header.top>#majbox .maj{grid-column:2}
+html body header.top>#majbox .changes{grid-column:2}
+@media (max-width:560px){html body header.top>#majbox .maj-logo{width:36px;height:36px}}
 </style>
 <link rel="stylesheet" href="auteur.css">
 <link rel="stylesheet" href="defiler.css">
@@ -199,6 +207,7 @@ header.top .intro{font-size:16px}
 <div class="wrap">
   <header class="top">
     <div class="majbox" id="majbox">
+      <img class="maj-logo" src="logo-blanc.svg" alt="" width="46" height="46">
       <p class="maj">Dernière mise à jour : <time id="maj" datetime="2026-11-25T18:07+01:00">mercredi 25 novembre 2026, 18 h 07</time> · actualisé chaque matin · Site internet réalisé avec l’assistant d’intelligence artificielle Claude (Anthropic)</p>
       <div class="changes"><b>Ce qui a changé :</b><div id="changes">Mise en place de la mise à jour quotidienne et nouvelle apparence du site.</div></div>
     </div>
