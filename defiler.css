@@ -94,15 +94,19 @@ html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c)
 html body .wrap{padding-top:0}
 html body header.top>.majbox{
   box-sizing:border-box;position:relative;left:50%;width:100vw;max-width:none;
-  margin:0 0 26px -50vw;
-  padding:7px max(20px,calc((100vw - 1400px)/2 + 20px));
+  margin:0 0 20px -50vw;
+  padding:3px max(20px,calc((100vw - 1400px)/2 + 20px));
   background:var(--card);border:0;border-bottom:1px solid var(--line);border-radius:0;
-  display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:2px 28px;
+  display:flex;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:0 18px;
 }
-html body header.top .majbox .maj{margin:0;font-size:12.5px;font-weight:600;color:var(--ink);flex:0 1 auto;max-width:100%}
-html body header.top .majbox .maj time{font-weight:600;padding:0 6px}
-html body header.top .majbox .changes{font-size:12.5px;line-height:1.4;color:var(--muted);flex:1 1 360px;min-width:0}
-html body header.top .majbox .changes b{font-weight:700;color:var(--ink);margin-right:6px}
+html body header.top .majbox .maj{margin:0;font-size:11px;line-height:1.3;font-weight:600;color:var(--ink);flex:0 1 auto;max-width:100%}
+html body header.top .majbox .maj time{font-weight:600;padding:0 4px}
+html body header.top .majbox .changes{font-size:11px;line-height:1.3;color:var(--muted);flex:1 1 320px;min-width:0}
+html body header.top .majbox .changes b{font-weight:700;color:var(--ink);margin-right:4px}
 html body header.top .majbox .changes>div{display:inline}
-html body header.top .majbox .changes ul{display:inline-block;vertical-align:top;margin:0;padding-left:16px}
-html body header.top .majbox .changes li{margin:0 0 1px}
+html body header.top .majbox .changes ul{display:inline;margin:0;padding:0;list-style:none}
+html body header.top .majbox .changes li{display:inline;margin:0}
+html body header.top .majbox .changes li+li::before{content:" · ";color:var(--muted)}
+
+/* ===== Vignettes : aplat uniforme, aucun dégradé ===== */
+html body .face,html body .front,html body .back{background:#E7EDF4;background-image:none}
