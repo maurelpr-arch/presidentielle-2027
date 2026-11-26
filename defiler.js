@@ -1,8 +1,33 @@
 /* Repères de défilement.
    - « Faire défiler » : visible en haut de page, disparaît dès qu'on descend ; un clic mène aux deux colonnes.
-   - « Plus de cartes » : visible tant que la colonne de droite n'est pas arrivée en bas. */
+   - « Plus de cartes » : visible tant que la colonne de droite n'est pas arrivée en bas.
+   - Ordre des cartes à retourner : les plus importantes en haut, les plus secondaires en bas. */
 (function(){
   "use strict";
+
+  /* Ordre des cartes (identifiants de app.js). Les cartes sont rangées deux par deux ; l'ordre alterne les couleurs
+     et les types d'information (chiffres, dates, institutions…) pour que deux cartes voisines ne se ressemblent pas.
+     Une carte absente de cette liste (ajoutée plus tard dans app.js) reste à la fin, dans son ordre d'origine.
+       1re ligne : candidatures · électeurs      2e : parrainages · 18 avril      3e : FAQ · présidents
+       4e : gouvernements · législatives          5e : Assemblée · élection         6e : loi · résultats 2022
+       7e : histoire · cohabitations              8e : référendums · Ve République  9e : 49.3 · Conseil constitutionnel
+       10e : mandat présidentiel · motion de censure */
+  var ORDRE=["candidats","electeurs","parrainages","dates","faq","presidents","gouvernements","legislatives",
+             "assemblee","election","loi","2022","histoire","cohabitations","referendums","republique",
+             "493","cc","president","motion"];
+  var flipsBox=document.getElementById("flips");
+  if(flipsBox){
+    ORDRE.forEach(function(id){
+      var carte=document.getElementById("flip-"+id);
+      if(carte&&carte.parentNode===flipsBox)flipsBox.appendChild(carte);
+    });
+    /* les cartes non listées passent après les cartes classées, sans changer leur ordre relatif */
+    Array.prototype.slice.call(flipsBox.children).forEach(function(c){
+      var id=(c.id||"").replace(/^flip-/,"");
+      if(c.id&&ORDRE.indexOf(id)===-1)flipsBox.appendChild(c);
+    });
+  }
+
   var cue=document.getElementById("scrollcue");
   var right=document.querySelector(".col-right");
   var more=document.getElementById("more");
