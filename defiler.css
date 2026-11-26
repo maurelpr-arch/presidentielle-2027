@@ -69,14 +69,14 @@
   .scrollcue,.more{transition:none}
 }
 
-/* ===== Thème « fond blanc, encadrés bleu-gris pâle » =====
+/* ===== Thème « fond blanc, encadrés gris-blanc façon papier journal » =====
    Le fond du site est blanc.
-   Les encadrés (autrefois blancs) ont un fond uniforme bleu métallique très pâle, froid et légèrement grisé : le texte reste bien lisible.
+   Les encadrés (autrefois blancs) sont gris-blanc, avec un léger grain de papier : le texte reste bien lisible.
    Les éléments qui étaient pâles à l'intérieur des encadrés sont en blanc. */
 :root{
   --bg:#FFFFFF;
-  --card:#E7EDF4;
-  --line:#C6D0DC;
+  --card:#E8E8E4;
+  --line:#C8C8C2;
   --cream:#FFFFFF;
 }
 html body{background-color:var(--bg);background-image:none;overflow-x:clip}
@@ -84,7 +84,7 @@ html body{background-color:var(--bg);background-image:none;overflow-x:clip}
 .bar,.ref .meter{background:var(--cream)}
 .lg:hover,.lg.on{background:var(--cream)}
 .maj time{background:var(--cream)}
-.donut .seg{stroke:#E7EDF4}
+.donut .seg{stroke:#E8E8E4}
 /* rond des candidats : liseré blanc, comme le fond */
 html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c),0 8px 20px rgba(19,32,59,.15)}
 /* « Plus de cartes » : dégradé aux couleurs du fond */
@@ -113,5 +113,11 @@ html body header.top .majbox .changes li+li{margin-left:10px}
 html body header.top .majbox .changes li:last-child:not(:first-child){display:block;margin:2px 0 0}
 html body header.top .majbox .changes li:last-child:not(:first-child)::before{margin-left:0}
 
-/* ===== Vignettes : aplat uniforme, aucun dégradé ===== */
-html body .face,html body .front,html body .back{background:#E7EDF4;background-image:none}
+/* ===== Papier journal : gris-blanc, avec un léger grain (pas de dégradé) =====
+   Le grain est un petit motif de bruit dessiné par le navigateur (aucune image à charger). */
+html body .face,html body .front,html body .back,
+html body header.top>.majbox,
+html body .key,html body .chip,html body .ev.major .box{
+  background-color:#E8E8E4;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 .8 0 0 0 -.36'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+}
