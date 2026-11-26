@@ -1,4 +1,4 @@
-/* Bandeau d'accueil : défilé des candidats, un par un. Après chaque série de 4, une diapo « ? ».
+/* Bandeau d'accueil : défilé des candidats, un par un. Après chaque série de 4, une diapo « ? » (le logo couronné).
    Les candidats viennent de CANDS (donnees.js), donc le défilé suit la mise à jour quotidienne.
    Ordre aléatoire à chaque visite, même temps d'affichage pour tous : aucun candidat n'est mis en avant.
 
@@ -17,6 +17,7 @@
   if(!stage||typeof CANDS==="undefined"||!CANDS.length)return;
 
   var PHOTO_DIR="photos/",PHOTO_EXT=".jpg";
+  var LOGO="logo.svg";
   var GROUP=4,T_CAND=1400,T_Q=1900;
   var colors={};
   (typeof COURANTS!=="undefined"?COURANTS:[]).forEach(function(c){colors[c.k]=c.color});
@@ -52,7 +53,14 @@
   function render(s){
     var slide=el("div","hero-slide"+(s.q?" is-q":""));
     if(s.q){
-      slide.appendChild(el("div","hero-bigq","?"));
+      /* le logo (point d'interrogation couronné) remplace le grand « ? » ; sa taille suit celle de .hero-bigq */
+      var big=el("div","hero-bigq");
+      var logo=document.createElement("img");
+      logo.src=LOGO;logo.alt="";
+      logo.style.cssText="display:block;width:1.15em;height:1.15em";
+      logo.onerror=function(){logo.remove();big.textContent="?"};
+      big.appendChild(logo);
+      slide.appendChild(big);
       var t=el("p","hero-qtext","Qui sera le ou la prochain·e président·e ?");
       t.appendChild(el("small",null,"Réponse les 18 avril et 2 mai 2027"));
       slide.appendChild(t);
