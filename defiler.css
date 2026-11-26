@@ -91,7 +91,8 @@ html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c)
 .more{background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.96) 75%)}
 
 /* ===== Bandeau « Dernière mise à jour » : toute la largeur de la page, tout en haut, bien délimité =====
-   Texte à gauche : la date, puis « Ce qui a changé » avec ses puces. */
+   Tout est aligné à gauche : la date, puis « Ce qui a changé » ; les changements et la
+   « Vérification effectuée » se suivent sur la même ligne, séparés par une puce, pour profiter de la largeur. */
 html body .wrap{padding-top:0}
 html body header.top>.majbox{
   box-sizing:border-box;position:relative;left:50%;width:100vw;max-width:none;
@@ -100,12 +101,15 @@ html body header.top>.majbox{
   background:var(--card);border:0;border-bottom:1px solid var(--line);border-radius:0;
   display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:3px;
 }
-html body header.top .majbox .maj{margin:0;font-size:13px;line-height:1.35;font-weight:600;color:var(--ink);max-width:100%}
+html body header.top .majbox .maj{margin:0;font-size:13px;line-height:1.35;font-weight:600;color:var(--ink);max-width:100%;text-align:left}
 html body header.top .majbox .maj time{font-weight:600;padding:0 5px}
-html body header.top .majbox .changes{font-size:13px;line-height:1.4;color:var(--ink);min-width:0;max-width:100%}
-html body header.top .majbox .changes b{font-weight:700;color:var(--ink)}
-html body header.top .majbox .changes ul{margin:2px 0 0;padding-left:20px;list-style:disc}
-html body header.top .majbox .changes li{margin:0 0 1px}
+html body header.top .majbox .changes{font-size:13px;line-height:1.45;color:var(--ink);min-width:0;max-width:none;width:100%;text-align:left}
+html body header.top .majbox .changes b{font-weight:700;color:var(--ink);margin-right:6px}
+html body header.top .majbox .changes>div{display:inline}
+html body header.top .majbox .changes ul{display:inline;margin:0;padding:0;list-style:none}
+html body header.top .majbox .changes li{display:inline;margin:0}
+html body header.top .majbox .changes li::before{content:"\2022";margin:0 7px 0 2px;color:var(--ink)}
+html body header.top .majbox .changes li+li{margin-left:10px}
 
 /* ===== Vignettes : aplat uniforme, aucun dégradé ===== */
 html body .face,html body .front,html body .back{background:#E7EDF4;background-image:none}
