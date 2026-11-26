@@ -69,15 +69,15 @@
   .scrollcue,.more{transition:none}
 }
 
-/* ===== Thème « fond crème, encadrés colorés » (inversé) =====
-   Le fond du site devient un blanc crème, pas trop vif.
+/* ===== Thème « fond blanc, encadrés colorés » (inversé) =====
+   Le fond du site est blanc.
    Les encadrés, autrefois blancs, prennent un fond très pâle (rose, violet, bleu) : le texte reste bien lisible.
-   Les éléments qui étaient pâles à l'intérieur des encadrés passent en blanc crème. */
+   Les éléments qui étaient pâles à l'intérieur des encadrés passent en blanc. */
 :root{
-  --bg:#FBF6EA;
+  --bg:#FFFFFF;
   --card:linear-gradient(135deg,#FCEDF3 0%,#F2EEFD 52%,#E9F1FE 100%);
   --line:#D8D2E4;
-  --cream:#FFFDF7;
+  --cream:#FFFFFF;
 }
 html body{background-color:var(--bg);background-image:none}
 .stat{background:var(--cream)}
@@ -85,7 +85,7 @@ html body{background-color:var(--bg);background-image:none}
 .lg:hover,.lg.on{background:var(--cream)}
 .maj time{background:var(--cream)}
 .donut .seg{stroke:#F6F1FC}
-/* rond des candidats : liseré crème, comme le fond */
-html body .hero-av{box-shadow:0 0 0 4px rgba(251,246,234,.95),0 0 0 6px var(--c),0 8px 20px rgba(19,32,59,.15)}
-/* « Plus de cartes » : dégradé aux couleurs du nouveau fond */
-.more{background:linear-gradient(to bottom,rgba(251,246,234,0),rgba(251,246,234,.96) 75%)}
+/* rond des candidats : liseré blanc, comme le fond */
+html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c),0 8px 20px rgba(19,32,59,.15)}
+/* « Plus de cartes » : dégradé aux couleurs du fond */
+.more{background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.96) 75%)}
