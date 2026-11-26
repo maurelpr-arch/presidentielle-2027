@@ -184,6 +184,12 @@ header.top .changes b{font-weight:700}
 .edito p{margin:0 0 8px;font-size:15.5px;color:var(--ink)}
 .edito p:last-child{margin-bottom:0;color:var(--muted);font-size:14.5px}
 header.top .intro{font-size:16px}
+
+/* Titre principal + logo à sa droite */
+.hero-top{display:flex;align-items:flex-start;gap:32px}
+.hero-top .hero-text{flex:1 1 auto;min-width:0}
+.hero-top .hero-logo{flex:none;width:clamp(150px,17vw,250px);height:auto;margin:-2px 0 0}
+@media (max-width:760px){.hero-top .hero-logo{display:none}}
 </style>
 <link rel="stylesheet" href="auteur.css">
 <link rel="stylesheet" href="defiler.css">
@@ -198,8 +204,13 @@ header.top .intro{font-size:16px}
     </div>
 
     <section class="hero" aria-labelledby="h-hero">
-      <h2 class="hero-q" id="h-hero">Qui sera le nouveau président<br>ou la nouvelle présidente de la République<span class="hero-qm">&nbsp;?</span></h2>
-      <p class="hero-sub"><b>32 candidats et candidates déclarés, 8 femmes, 24 hommes</b>, et plus que quelques mois pour collecter les 500 parrainages d’élus nécessaires à une candidature officielle. <span class="hero-go">Le compte à rebours est lancé.</span></p>
+      <div class="hero-top">
+        <div class="hero-text">
+          <h2 class="hero-q" id="h-hero">Qui sera le nouveau président<br>ou la nouvelle présidente de la République<span class="hero-qm">&nbsp;?</span></h2>
+          <p class="hero-sub"><b>32 candidats et candidates déclarés, 8 femmes, 24 hommes</b>, et plus que quelques mois pour collecter les 500 parrainages d’élus nécessaires à une candidature officielle. <span class="hero-go">Le compte à rebours est lancé.</span></p>
+        </div>
+        <img class="hero-logo" src="logo.svg" alt="Logo du site : un point d’interrogation couronné" width="600" height="600">
+      </div>
       <div class="hero-box">
         <div class="hero-stage" id="hero-stage" aria-hidden="true"></div>
         <div class="hero-steps" id="hero-steps" aria-hidden="true"></div>
@@ -221,7 +232,6 @@ header.top .intro{font-size:16px}
         <p>Le classement des candidats par courant politique est indicatif et ne met personne en avant. Les informations sont actualisées chaque jour de façon automatisée, avec l’aide d’une intelligence artificielle, et peuvent contenir des erreurs. Vérifiez toujours sur les sites officiels, comme service-public.gouv.fr et le Conseil constitutionnel.</p>
       </section>
       <aside class="auteur" aria-label="À propos du concepteur du site">
-        <img src="logo.svg" alt="Logo du site : un point d’interrogation couronné" width="600" height="600" style="float:none;display:block;width:230px;max-width:100%;height:auto;margin:0 0 16px;mix-blend-mode:normal">
         <img src="pierre-maurel.jpg" alt="Portraits de Pierre Maurel, concepteur du site" width="640" height="677" onerror="this.remove()">
         <div class="role">Le concepteur du site</div>
         <h2>Pierre Maurel</h2>
