@@ -91,8 +91,8 @@ html body .hero-av{box-shadow:0 0 0 4px rgba(255,255,255,.95),0 0 0 6px var(--c)
 .more{background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.96) 75%)}
 
 /* ===== Bandeau « Dernière mise à jour » : toute la largeur de la page, tout en haut, bien délimité =====
-   Tout est aligné à gauche : la date, puis « Ce qui a changé » ; les changements et la
-   « Vérification effectuée » se suivent sur la même ligne, séparés par une puce, pour profiter de la largeur. */
+   Tout est aligné à gauche : la date, puis « Ce qui a changé » ; les changements se suivent sur la même ligne,
+   séparés par une puce, et la « Vérification effectuée : » (dernier élément) passe à la ligne, à gauche. */
 html body .wrap{padding-top:0}
 html body header.top>.majbox{
   box-sizing:border-box;position:relative;left:50%;width:100vw;max-width:none;
@@ -110,6 +110,8 @@ html body header.top .majbox .changes ul{display:inline;margin:0;padding:0;list-
 html body header.top .majbox .changes li{display:inline;margin:0}
 html body header.top .majbox .changes li::before{content:"\2022";margin:0 7px 0 2px;color:var(--ink)}
 html body header.top .majbox .changes li+li{margin-left:10px}
+html body header.top .majbox .changes li:last-child:not(:first-child){display:block;margin:2px 0 0}
+html body header.top .majbox .changes li:last-child:not(:first-child)::before{margin-left:0}
 
 /* ===== Vignettes : aplat uniforme, aucun dégradé ===== */
 html body .face,html body .front,html body .back{background:#E7EDF4;background-image:none}
