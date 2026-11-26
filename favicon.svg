@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Icône : un point d’interrogation couronné">
+<rect width="600" height="600" rx="90" fill="#FFFFFF"/>
+<path d="M950 1043Q950 872 859.5 769.0Q769 666 578 614L497 592L434 390H331L329 703L436 726Q680 777 680 1051Q680 1254 491 1254Q453 1254 411.5 1240.5Q370 1227 344 1207L279 1013H190L230 1308Q388 1356 542 1356Q737 1356 843.5 1275.5Q950 1195 950 1043ZM350 -29Q280 -29 232.5 19.0Q185 67 185 137Q185 207 232.5 255.0Q280 303 350 303Q419 303 467.5 255.0Q516 207 516 137Q516 68 468.0 19.5Q420 -29 350 -29Z" transform="translate(152.49 518.46) scale(0.2599 -0.2599)" fill="#111111"/>
+<g transform="translate(340.0 136.0) rotate(-11) scale(.82)">
+  <path d="M-92 36 L-100 -44 L-50 -4 L0 -62 L50 -4 L100 -44 L92 36 Z" fill="#111111"/>
+  <path d="M-88 12 H88" stroke="#FFFFFF" stroke-width="5" fill="none"/>
+  <path d="M-90 36 Q0 50 90 36" stroke="#111111" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="-100" cy="-52" r="11" fill="#111111"/><circle cx="0" cy="-72" r="12" fill="#111111"/><circle cx="100" cy="-52" r="11" fill="#111111"/>
+  <circle cx="-46" cy="24" r="5" fill="#FFFFFF"/><circle cx="0" cy="24" r="5" fill="#FFFFFF"/><circle cx="46" cy="24" r="5" fill="#FFFFFF"/>
+</g>
+</svg>
