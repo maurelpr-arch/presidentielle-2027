@@ -121,3 +121,12 @@ html body .key,html body .chip,html body .ev.major .box{
   background-color:#E8E8E4;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 .8 0 0 0 -.36'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
 }
+
+/* ===== Bandeau du haut : fond noir, tout le texte en blanc (mêmes tailles, mêmes textes) ===== */
+html body header.top>.majbox{background-color:#000;background-image:none;border-bottom:0}
+html body header.top .majbox .maj,
+html body header.top .majbox .maj time,
+html body header.top .majbox .changes,
+html body header.top .majbox .changes b,
+html body header.top .majbox .changes li::before{color:#fff}
+html body header.top .majbox .maj time{background:rgba(255,255,255,.16)}
