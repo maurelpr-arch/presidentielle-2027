@@ -1,5 +1,5 @@
 /* En-tête, de haut en bas :
-   1. « Dernière mise à jour » (un peu à part), 2. la grande question et son sous-titre,
+   1. « Dernière mise à jour » (un peu à part), 2. la grande question sur deux lignes et son sous-titre,
    3. le défilé des candidats, 4. « La présidentielle 2027 pour les nuls », puis l'édito.
    Rythme du défilé : 4 candidats, puis un « ? », et on recommence.
    Le rond montre les initiales du candidat sur la couleur de son courant ; une photo les recouvre si elle existe.
@@ -8,10 +8,10 @@
 /* 1. Dernière mise à jour : séparée du reste */
 header.top>.majbox{margin-bottom:26px}
 
-/* 2. La question, puis le sous-titre.
+/* 2. La question : deux lignes (saut de ligne après « président »), toujours dans la largeur de la page.
    Pas de ligne forcée : sur petit écran, le texte passe simplement à la ligne. */
 header.top>.hero.hero{max-width:none;margin:0 0 10px}
-header.top .hero-q{font-size:clamp(24px,3.6vw,52px);line-height:1.12;margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance;overflow-wrap:break-word}
+header.top .hero-q{font-size:clamp(26px,3.9vw,56px);line-height:1.12;margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance;overflow-wrap:break-word}
 .hero-qm{color:var(--accent)}
 header.top .hero-sub{margin:0 0 18px;max-width:980px;font-size:clamp(16px,1.6vw,20px);line-height:1.45;color:var(--ink)}
 header.top .hero-sub b{font-weight:700}
