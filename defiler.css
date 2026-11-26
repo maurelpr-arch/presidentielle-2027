@@ -116,10 +116,11 @@ html body header.top .majbox .changes li:last-child:not(:first-child)::before{ma
 /* ===== Papier journal : gris-blanc, avec un léger grain (pas de dégradé) =====
    Le grain est un petit motif de bruit dessiné par le navigateur (aucune image à charger). */
 html body .face,html body .front,html body .back,
-html body header.top>.majbox,
 html body .key,html body .chip,html body .ev.major .box{
   background-color:#E8E8E4;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 .8 0 0 0 -.36'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='w' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.2 0 0 0 -1.05'/></filter><rect width='140' height='140' filter='url(%23w)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 1 0 0 0 -.4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
 }
 
 /* ===== Bandeau du haut : fond noir, tout le texte en blanc (mêmes tailles, mêmes textes) ===== */
