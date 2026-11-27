@@ -117,15 +117,15 @@ html body header.top .ag-map-note{margin:auto 0 0;padding-top:12px;max-width:non
 /* ===== Photomaton du concepteur : sans cadre blanc, il se pose directement sur le fond papier (le blanc de l'image disparait par multiplication) ===== */
 html body .mo-portrait{border:0;background:transparent;mix-blend-mode:multiply}
 
-/* ===== Bandeau défilant « Le site en bref : » sous la barre noire (mosaic.js) =====
-   27 nov., 19 h : fond noir, étiquette bleue. 19 h 09 : Pierre le veut discret, « presque transparent » : noir sur blanc, sans cadre ni fond,
-   étiquette suivie de deux points (ajoutés en CSS), police de presse plus carrée (Newsreader, la serif des titres) et plus petite. */
-html body header.top p.pitch.ticker{display:flex;align-items:baseline;max-width:none;margin:20px 0 0;padding:0;background:none;color:#000;border:0;border-radius:0;overflow:hidden;font:400 clamp(13px,1.1vw,15px)/1.3 var(--display)}
-.tk-label{flex:none;display:flex;align-items:center;padding:0 10px 0 0;background:none;color:#000;font:700 clamp(13px,1.1vw,15px)/1.3 var(--display);letter-spacing:0;text-transform:none;white-space:nowrap}
-.tk-label::after{content:"\00a0:"}
-.tk-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center;-webkit-mask:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%)}
-.tk-track{display:inline-flex;flex:none;white-space:nowrap;padding:0;will-change:transform;animation:tk-defile var(--tkd,90s) linear infinite}
+/* ===== Bandeau défilant « Le site en bref » sous la barre noire (mosaic.js) =====
+   27 nov., 19 h : fond noir, étiquette bleue, texte blanc. 19 h 09 : essai noir sur blanc sans cadre (serif), abandonné.
+   19 h 15 : Pierre préfère le design noir et bleu de la première version, en plus petit : on le rétablit avec police 12-14 px (avant 15-19), étiquette 10,5 px, hauteur réduite de moitié environ. */
+html body header.top p.pitch.ticker{display:flex;align-items:stretch;max-width:none;margin:18px 0 0;padding:0;background:#000;color:#fff;border-radius:5px;overflow:hidden;font:500 clamp(12px,1.05vw,14px)/1.2 var(--body)}
+.tk-label{flex:none;display:flex;align-items:center;padding:8px 12px;background:var(--brand-blue);color:#fff;font:700 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.tk-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center;-webkit-mask:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 20px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 20px),transparent 100%)}
+.tk-track{display:inline-flex;flex:none;white-space:nowrap;padding:8px 0;will-change:transform;animation:tk-defile var(--tkd,90s) linear infinite}
 .tk-track>span{flex:none;padding-right:4em}
 @keyframes tk-defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 html body header.top p.pitch.ticker:hover .tk-track{animation-play-state:paused}
-@media (prefers-reduced-motion:reduce){.tk-track{animation:none;white-space:normal;padding:0}.tk-track>span+span{display:none}.tk-track>span{padding-right:0}.tk-view{-webkit-mask:none;mask:none}}
+@media (max-width:560px){.tk-label{padding:7px 9px;font-size:10px}}
+@media (prefers-reduced-motion:reduce){.tk-track{animation:none;white-space:normal;padding:8px 14px}.tk-track>span+span{display:none}.tk-track>span{padding-right:0}.tk-view{-webkit-mask:none;mask:none}}
