@@ -5,9 +5,10 @@
    majuscules à peu près au haut de la ligne : hauteur des lettres = .713 t.
    Le disque du macaron fait 54/58 de son cadre. Disque voulu = .91 t (aussi gros que les lettres, du haut des majuscules et des
    hampes jusqu'au-dessous des lettres : validé par Pierre le 27 nov.) : cadre = .91 t / (54/58) = .98 t. Marge haute mesurée sur le
-   site : -.115 t met le centre du disque exactement au centre des majuscules (mesuré : écart 0,00 px à 92 px). */
+   site : -.115 t met le centre du disque exactement au centre des majuscules (mesuré : écart 0,00 px à 92 px).
+   27 nov., 18 h 50 : Pierre demande +10 % : cadre 1,078 t (disque 1,0 t), marge -.164 t pour garder le même centre (.375 t). */
 html body header.top>.brand{--t:clamp(40px,7vw,92px);max-width:none;display:flex;align-items:flex-start;gap:clamp(14px,2.2vw,26px);margin:18px 0 6px;padding:0 0 18px;border-bottom:4px solid #000}
-.brand-mark{flex:none;width:calc(var(--t)*.98);height:calc(var(--t)*.98);margin-top:calc(var(--t)*-.115);display:block}
+.brand-mark{flex:none;width:calc(var(--t)*1.078);height:calc(var(--t)*1.078);margin-top:calc(var(--t)*-.164);display:block}
 .brand-txt{min-width:0}
 .brand-dot{fill:var(--electric)}
 html body header.top .brand-name{margin:0;font:600 var(--t)/1 var(--display);letter-spacing:-.015em;color:#000}
@@ -23,6 +24,7 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
 /* ===== Section « Qui sera… » : à part entière sous la marque =====
    Le logo « ? » couronné est carré, à droite du titre.
    Hauteur du bloc de texte mesurée sur le site : 190 px à 1400 px de large, 160 px à 1100 px, soit 50 px + 10 vw, plafonnée à 195 px.
+   27 nov., 18 h 50 : logo -10 % à la demande de Pierre, même emplacement : 45 px + 9 vw, de 99 à 175 px.
    (Une taille automatique par étirement + aspect-ratio ne marche pas : le logo reprend sa taille naturelle.)
    Le logo est centré (marges auto) dans la colonne vide à droite du texte, au milieu du bloc de texte en hauteur (mesuré : centres
    alignés à 0,0 px). Titre descendu : la règle de hero.css (`header.top > .hero.hero`, margin:0 0 10px) l'emportait sur la marge de 18 px de la
@@ -32,7 +34,7 @@ html body header.top>.hero.hero{margin-top:24px}
 html body header.top .hero-top{justify-content:flex-start;gap:0}
 html body header.top .hero-top .hero-text{flex:0 1 auto}
 html body header.top .hero-top .hero-sub{width:0;min-width:100%}
-html body header.top .hero-top .hero-logo{display:block;flex:none;width:clamp(110px,calc(50px + 10vw),195px);height:clamp(110px,calc(50px + 10vw),195px);margin:auto}
+html body header.top .hero-top .hero-logo{display:block;flex:none;width:clamp(99px,calc(45px + 9vw),175px);height:clamp(99px,calc(45px + 9vw),175px);margin:auto}
 @media (max-width:760px){html body header.top .hero-top .hero-logo{display:none}}
 
 /* ===== Titres : serif de la marque, en noir. Intertitres : sans-serif rond, en bleu du site ===== */
