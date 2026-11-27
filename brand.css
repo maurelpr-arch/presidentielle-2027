@@ -25,8 +25,10 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
    Hauteur du bloc de texte mesurée sur le site : 190 px à 1400 px de large, 160 px à 1100 px, soit 50 px + 10 vw, plafonnée à 195 px.
    (Une taille automatique par étirement + aspect-ratio ne marche pas : le logo reprend sa taille naturelle.)
    Le logo est centré (marges auto) dans la colonne vide à droite du texte, au milieu du bloc de texte en hauteur (mesuré : centres
-   alignés à 0,0 px). Titre descendu : 38 px sous le filet noir. */
-html body header.top>section.hero{margin-top:38px}
+   alignés à 0,0 px). Titre descendu : la règle de hero.css (`header.top > .hero.hero`, margin:0 0 10px) l'emportait sur la marge de 18 px de la
+   version précédente (qui n'a donc jamais été appliquée) ; on la bat avec le même doublement de classe. Marge 24 px + 6 px de la marque
+   + 10 px d'espacement = 40 px sous le filet noir (16 px avant). */
+html body header.top>.hero.hero{margin-top:24px}
 html body header.top .hero-top{justify-content:flex-start;gap:0}
 html body header.top .hero-top .hero-text{flex:0 1 auto}
 html body header.top .hero-top .hero-sub{width:0;min-width:100%}
@@ -90,6 +92,6 @@ html body header.top .ag-map-sub{margin:0 0 14px;max-width:none;font:400 15px/1.
 .ag-map-l1{font:700 27px var(--body);stroke-width:7px}
 .ag-map-l2{font:400 21px var(--body);stroke-width:6px}
 .ag-map-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font:400 15px/1.4 var(--body);color:#000}
-.ag-map-list b{font-weight:700;text-transform:capitalize}
+.ag-map-list b{font-weight:700}
 html body header.top .ag-map-note{margin:12px 0 0;max-width:none;font:400 12.5px/1.4 var(--body);color:var(--muted);text-transform:none;letter-spacing:0}
 @media (max-width:820px){.ag-map-grid{grid-template-columns:minmax(0,1fr)}.ag-map{padding:18px 16px 14px}}
