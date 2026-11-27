@@ -99,13 +99,17 @@ html body header.top .ag-map-t{margin:0 0 8px;font:600 clamp(32px,3.3vw,46px)/1.
 html body header.top .ag-map-qm{color:var(--brand-blue)}
 html body header.top .ag-map-sub{margin:0;max-width:none;font:600 15px/1.4 var(--body);color:var(--brand-blue);text-transform:none;letter-spacing:0}
 .ag-map-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px 28px;align-items:center}
+.ag-map-read{margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line)}
+html body header.top .ag-map-stat{margin:0 0 8px;max-width:none;font:700 16px/1.4 var(--body);color:var(--brand-blue);text-transform:none;letter-spacing:0}
+html body header.top .ag-map-how{margin:0;max-width:none;font:400 15px/1.55 var(--body);color:#000;text-transform:none;letter-spacing:0}
+.ag-map-lead{fill:none;stroke:var(--brand-blue);stroke-width:2.5;stroke-opacity:.55;stroke-linecap:round}
 .ag-map-box svg{display:block;width:100%;height:auto;overflow:visible}
 .ag-map-fr{fill:#fff;stroke:#111;stroke-width:2;stroke-linejoin:round}
 .ag-map-halo{fill:var(--brand-blue);fill-opacity:.16}
 .ag-map-dot{fill:var(--brand-blue);stroke:#fff;stroke-width:3}
 .ag-map-n{font:700 24px var(--body);fill:#fff}
 .ag-map-l1,.ag-map-l2{paint-order:stroke;stroke:#fff;stroke-linejoin:round;fill:#000}
-.ag-map-l1{font:700 27px var(--body);stroke-width:7px}
+.ag-map-l1{font:700 29px var(--body);stroke-width:7px}
 .ag-map-l2{font:400 21px var(--body);stroke-width:6px}
 .ag-map-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font:400 15px/1.4 var(--body);color:#000}
 .ag-map-list b{font-weight:700}

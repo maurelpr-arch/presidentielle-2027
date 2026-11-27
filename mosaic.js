@@ -1,3 +1,36 @@
+/* Édito de la semaine en carte à retourner : si edito.json contient "suite" (liste de paragraphes), la carte reçoit un bouton « Lire la suite » qui ouvre le texte complet dans une fenêtre,
+   comme les autres cartes. La carte est créée par agenda.js après le chargement de edito.json : on l'attend. */
+(function(){
+  if(!window.fetch||!document.createElement("dialog").showModal) return;
+  fetch("edito.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(j){
+    if(!j||!j.suite||!j.suite.length) return;
+    function attach(){
+      var li=document.querySelector(".ag-edito"); if(!li) return false;
+      if(li.querySelector(".mo-more")) return true;
+      var b=document.createElement("button"); b.type="button"; b.className="mo-more"; b.textContent="Lire la suite";
+      var sig=li.querySelector(".ag-edito-sig"); li.insertBefore(b,sig||null);
+      var dlg=document.createElement("dialog"); dlg.className="mo-dialog"; dlg.setAttribute("aria-labelledby","ed-dt");
+      var hd=document.createElement("div"); hd.className="mo-dh";
+      var h=document.createElement("h2"); h.id="ed-dt"; h.textContent=j.titre||j.kick||"L’édito de la semaine";
+      var x=document.createElement("button"); x.type="button"; x.className="mo-x"; x.textContent="Fermer";
+      hd.appendChild(h); hd.appendChild(x);
+      var bd=document.createElement("div"); bd.className="mo-db";
+      [j.texte].concat(j.suite).forEach(function(t){ if(!t) return; var p=document.createElement("p"); p.textContent=t; bd.appendChild(p); });
+      if(j.signe){ var s=document.createElement("p"); s.className="ag-edito-sig"; s.textContent=j.signe; bd.appendChild(s); }
+      dlg.appendChild(hd); dlg.appendChild(bd); document.body.appendChild(dlg);
+      b.addEventListener("click",function(){ dlg.showModal(); dlg.scrollTop=0; });
+      x.addEventListener("click",function(){ dlg.close(); });
+      dlg.addEventListener("click",function(e){ if(e.target===dlg) dlg.close(); });
+      dlg.addEventListener("close",function(){ b.focus(); });
+      return true;
+    }
+    if(attach()) return;
+    var mo=new MutationObserver(function(){ if(attach()) mo.disconnect(); });
+    mo.observe(document.body,{childList:true,subtree:true});
+    setTimeout(function(){ mo.disconnect(); },15000);
+  }).catch(function(){});
+})();
+
 /* Menu du haut : lien « La carte » (la carte des rendez-vous est construite par agenda.js, son titre porte l'id h-agmap), placé après « La semaine ». */
 (function(){
   var first=document.querySelector(".tn-links li"); if(!first||document.querySelector('.tn-links a[href="#h-agmap"]')) return;
