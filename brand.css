@@ -1,14 +1,15 @@
 /* Bleu du site (celui de « Le compte à rebours est lancé ») pour titres et intertitres ; bleu électrique réservé au macaron et à la vague */
 :root{--brand-blue:#0B3D91;--electric:#0F3DFF}
 /* ===== Marque : macaron + titre, détaché en haut =====
-   --t = hauteur de la ligne du titre ; le macaron fait exactement cette hauteur et se cale en haut de la ligne,
-   donc son centre est sur la même horizontale que le titre « L'Agenda Politique ». */
+   --t = hauteur de la ligne du titre. Dans la police du titre, la base des lettres est à .72 t du haut de la ligne et le haut des
+   majuscules à peu près au haut de la ligne. Le disque du macaron fait 54/58 de son cadre : cadre = .76 t donne un disque de .71 t,
+   posé sur la base des lettres et au niveau du haut des majuscules (marge négative de .014 t pour compenser les 2/58 du cadre). */
 html body header.top>.brand{--t:clamp(40px,7vw,92px);max-width:none;display:flex;align-items:flex-start;gap:clamp(14px,2.2vw,26px);margin:18px 0 6px;padding:0 0 18px;border-bottom:4px solid #000}
-.brand-mark{flex:none;width:var(--t);height:var(--t);display:block}
+.brand-mark{flex:none;width:calc(var(--t)*.76);height:calc(var(--t)*.76);margin-top:calc(var(--t)*-.014);display:block}
 .brand-txt{min-width:0}
 .brand-dot{fill:var(--electric)}
 html body header.top .brand-name{margin:0;font:600 var(--t)/1 var(--display);letter-spacing:-.015em;color:#000}
-html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin:10px 0 0;font:600 clamp(11px,1.3vw,15px)/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin:10px 0 0;font:600 clamp(11px,1.3vw,15px)/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:#000}
 .brand-sub span{flex:0 0 clamp(24px,3vw,40px);height:14px;
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 14' preserveAspectRatio='none'><path d='M0 7C4 1 8 1 12 7S20 13 24 7H26.500L29 1L32 13L34.500 4L36.500 7H40' fill='none' stroke='%230F3DFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' vector-effect='non-scaling-stroke'/></svg>") 0 0/100% 100% no-repeat;
   -webkit-mask:linear-gradient(90deg,rgba(0,0,0,.35) 0%,#000 50%,rgba(0,0,0,.35) 100%) 0 0/250% 100% no-repeat;
@@ -17,12 +18,12 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
 @keyframes tiret-pouls{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
 @media (prefers-reduced-motion:reduce){.brand-sub span{animation:none;-webkit-mask:none;mask:none}}
 
-/* ===== Section « Qui sera… » : à part entière sous la marque, logo plus petit et collé au titre ===== */
+/* ===== Section « Qui sera… » : à part entière sous la marque ; le logo « ? » couronné à droite du titre est retiré ===== */
 html body header.top>section.hero{margin-top:18px}
 html body header.top .hero-top{justify-content:flex-start;gap:clamp(10px,1.4vw,18px)}
 html body header.top .hero-top .hero-text{flex:0 1 auto}
 html body header.top .hero-top .hero-sub{width:0;min-width:100%}
-html body header.top .hero-top .hero-logo{width:clamp(64px,6.5vw,96px);margin:0}
+html body header.top .hero-top .hero-logo{display:none}
 
 /* ===== Titres : serif de la marque, en noir. Intertitres : sans-serif rond, en bleu du site ===== */
 html body header.top .hero-q,html body header.top>h2.eyebrow,html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-family:var(--display);font-weight:600;color:#000;text-transform:none;letter-spacing:-.005em;line-height:1.12}
@@ -54,19 +55,22 @@ html body header.top h2.eyebrow,html body header.top .hero,html body .mosaic,htm
 .daily{flex:0 0 clamp(210px,18vw,250px);margin-left:auto;height:232px;perspective:1400px}
 .daily-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s ease}
 .daily.is-flipped .daily-inner{transform:rotateY(180deg)}
-.daily-face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:12px;background:#fff;border:1px solid #D5DAE3;border-top:5px solid var(--brand-blue);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 8px 20px rgba(19,32,59,.10)}
+/* Fond papier gris à points blancs, le même que les cartes à retourner et les dates clés (voir defiler.css) */
+.daily-face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:12px;border:1px solid var(--line);border-top:5px solid var(--brand-blue);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 8px 20px rgba(19,32,59,.10);
+  background-color:#E8E8E4;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='w' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.2 0 0 0 -1.05'/></filter><rect width='140' height='140' filter='url(%23w)'/></svg>"),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 1 0 0 0 -.4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
 .daily-back{transform:rotateY(180deg)}
 .daily-fbtn{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;height:100%;padding:14px 16px 12px;cursor:pointer}
 div.daily-fbtn{cursor:default}
 .daily-fbtn:focus-visible{outline:3px solid #F2B90F;outline-offset:-3px;border-radius:8px}
 .daily-kick{font:700 12px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-blue)}
-.daily-date{font:500 13px/1.3 var(--body);color:var(--muted)}
+.daily-date{font:500 13px/1.3 var(--body);color:#000}
 .daily-tag{margin-top:6px;font:700 11px/1 var(--body);letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--brand-blue);border-radius:4px;padding:3px 6px}
 .daily-t{margin-top:4px;font:600 20px/1.2 var(--display);color:#000}
-.daily-q{font:400 13.5px/1.4 var(--body);color:var(--muted)}
+.daily-q{font:400 13.5px/1.4 var(--body);color:#000}
 .daily-hint{margin-top:auto;font:600 12.5px/1 var(--body);color:#000}
 .daily-fbtn:hover .daily-hint{color:var(--brand-blue);text-decoration:underline}
-.daily-bh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid #D5DAE3}
+.daily-bh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
 .daily-close{all:unset;cursor:pointer;box-sizing:border-box;font:600 13px/1 var(--body);padding:6px 12px;border:1px solid #000;border-radius:999px;color:#000}
 .daily-close:hover{background:#000;color:#fff}
 .daily-close:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
