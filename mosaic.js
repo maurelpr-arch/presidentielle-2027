@@ -1,6 +1,7 @@
 /* Mosaïque : le bouton « Lire la suite » ouvre le contenu complet dans une fenêtre (les boutons de partage gardent leur fonctionnement). */
 (function(){
   var btns=document.querySelectorAll(".mo-more");
+  Array.prototype.forEach.call(document.querySelectorAll("[data-goto]"),function(g){ g.addEventListener("click",function(){ var b=document.querySelector('.mo-more[data-open="'+g.getAttribute("data-goto")+'"]'); if(b) b.click(); }); });
   if(!btns.length||!document.createElement("dialog").showModal) return;
   var dlg=document.createElement("dialog");
   dlg.className="mo-dialog"; dlg.setAttribute("aria-labelledby","mo-dt");

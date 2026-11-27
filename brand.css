@@ -29,3 +29,17 @@ html body header.top p.ag-sub{font:400 15px/1.45 var(--body);color:var(--ink);te
 html body .month h3,html body .bb h4,html body .faq .grp{font-family:var(--body);font-weight:700;color:var(--brand-blue)}
 html body .month h3{font-size:17px;letter-spacing:.06em;text-transform:uppercase}
 html body .bb h4,html body .faq .grp{font-size:16px}
+
+/* ===== Menu en haut à droite + logos de partage ===== */
+html body header.top>.brand{flex-wrap:wrap}
+.topnav{order:-1;flex:1 1 100%;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px 28px;margin-bottom:6px}
+.tn-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 22px}
+.tn-links a{font:700 13px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#000;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.tn-links a:hover{color:var(--brand-blue);border-bottom-color:var(--brand-blue)}
+.tn-share{display:flex;gap:8px}
+.tn-share a,.tn-share button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1.5px solid #000;background:#fff;color:#000}
+.tn-share svg{width:19px;height:19px;fill:currentColor}
+.tn-share a:hover,.tn-share button:hover{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff}
+.tn-share a:focus-visible,.tn-share button:focus-visible,.tn-links a:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
+html body header.top h2.eyebrow,html body header.top .hero,html body .mosaic,html body .layout section,html body #partager{scroll-margin-top:16px}
+@media (max-width:900px){.topnav{justify-content:flex-start;gap:12px}.tn-links{justify-content:flex-start}}
