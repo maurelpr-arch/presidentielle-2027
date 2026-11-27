@@ -6,7 +6,13 @@ html body header.top>.brand{max-width:none;display:flex;align-items:center;gap:c
 .brand-dot{fill:var(--brand-blue)}
 html body header.top .brand-name{margin:0;font:600 clamp(40px,7vw,92px)/.98 var(--display);letter-spacing:-.015em;color:#000}
 html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin:10px 0 0;font:600 clamp(11px,1.3vw,15px)/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.brand-sub span{flex:0 0 clamp(24px,3vw,40px);height:3px;background:var(--brand-blue)}
+.brand-sub span{flex:0 0 clamp(24px,3vw,40px);height:14px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 14' preserveAspectRatio='none'><path d='M0 7C4 1 8 1 12 7S20 13 24 7H26.500L29 1L32 13L34.500 4L36.500 7H40' fill='none' stroke='%230F3DFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' vector-effect='non-scaling-stroke'/></svg>") 0 0/100% 100% no-repeat;
+  -webkit-mask:linear-gradient(90deg,rgba(0,0,0,.35) 0%,#000 50%,rgba(0,0,0,.35) 100%) 0 0/250% 100% no-repeat;
+          mask:linear-gradient(90deg,rgba(0,0,0,.35) 0%,#000 50%,rgba(0,0,0,.35) 100%) 0 0/250% 100% no-repeat;
+  animation:tiret-pouls 2.4s linear infinite}
+@keyframes tiret-pouls{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@media (prefers-reduced-motion:reduce){.brand-sub span{animation:none;-webkit-mask:none;mask:none}}
 
 /* ===== Section « Qui sera… » : à part entière sous la marque, logo plus petit ===== */
 html body header.top>section.hero{margin-top:18px}
