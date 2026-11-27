@@ -20,12 +20,17 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
 @keyframes tiret-pouls{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
 @media (prefers-reduced-motion:reduce){.brand-sub span{animation:none;-webkit-mask:none;mask:none}}
 
-/* ===== Section « Qui sera… » : à part entière sous la marque ; le logo « ? » couronné à droite du titre est retiré ===== */
+/* ===== Section « Qui sera… » : à part entière sous la marque =====
+   Le logo « ? » couronné est à droite, carré, du haut du titre au bas du texte « 32 candidats… ».
+   Hauteur du bloc de texte mesurée sur le site : 190 px à 1400 px de large, 160 px à 1100 px, soit 50 px + 10 vw, plafonnée à 195 px.
+   (Une taille automatique par étirement + aspect-ratio ne marche pas : le logo reprend sa taille naturelle.)
+   La marge basse de 18 px reprend celle du texte « 32 candidats… » pour que le bas du logo soit sur la dernière ligne. */
 html body header.top>section.hero{margin-top:18px}
 html body header.top .hero-top{justify-content:flex-start;gap:clamp(10px,1.4vw,18px)}
 html body header.top .hero-top .hero-text{flex:0 1 auto}
 html body header.top .hero-top .hero-sub{width:0;min-width:100%}
-html body header.top .hero-top .hero-logo{display:none}
+html body header.top .hero-top .hero-logo{display:block;flex:none;width:clamp(110px,calc(50px + 10vw),195px);height:clamp(110px,calc(50px + 10vw),195px);margin:0 0 18px auto}
+@media (max-width:760px){html body header.top .hero-top .hero-logo{display:none}}
 
 /* ===== Titres : serif de la marque, en noir. Intertitres : sans-serif rond, en bleu du site ===== */
 html body header.top .hero-q,html body header.top>h2.eyebrow,html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-family:var(--display);font-weight:600;color:#000;text-transform:none;letter-spacing:-.005em;line-height:1.12}
@@ -52,39 +57,6 @@ html body header.top>.brand{flex-wrap:wrap}
 .tn-share a:focus-visible,.tn-share button:focus-visible,.tn-links a:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
 html body header.top h2.eyebrow,html body header.top .hero,html body .mosaic,html body .layout section,html body #partager{scroll-margin-top:16px}
 @media (max-width:900px){.topnav{justify-content:flex-start;gap:12px}.tn-links{justify-content:flex-start}}
-
-/* ===== Carte à retourner « L'actu du jour », à droite de la grande question ===== */
-.daily{flex:0 0 clamp(210px,18vw,250px);margin-left:auto;height:232px;perspective:1400px}
-.daily-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s ease}
-.daily.is-flipped .daily-inner{transform:rotateY(180deg)}
-/* Fond papier gris à points blancs, le même que les cartes à retourner et les dates clés (voir defiler.css) */
-.daily-face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:12px;border:1px solid var(--line);border-top:5px solid var(--brand-blue);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 8px 20px rgba(19,32,59,.10);
-  background-color:#E8E8E4;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='w' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.2 0 0 0 -1.05'/></filter><rect width='140' height='140' filter='url(%23w)'/></svg>"),url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 1 0 0 0 -.4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
-.daily-back{transform:rotateY(180deg)}
-.daily-fbtn{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;height:100%;padding:14px 16px 12px;cursor:pointer}
-div.daily-fbtn{cursor:default}
-.daily-fbtn:focus-visible{outline:3px solid #F2B90F;outline-offset:-3px;border-radius:8px}
-.daily-kick{font:700 12px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-blue)}
-.daily-date{font:500 13px/1.3 var(--body);color:#000}
-.daily-tag{margin-top:6px;font:700 11px/1 var(--body);letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--brand-blue);border-radius:4px;padding:3px 6px}
-.daily-t{margin-top:4px;font:600 20px/1.2 var(--display);color:#000}
-.daily-q{font:400 13.5px/1.4 var(--body);color:#000}
-.daily-hint{margin-top:auto;font:600 12.5px/1 var(--body);color:#000}
-.daily-fbtn:hover .daily-hint{color:var(--brand-blue);text-decoration:underline}
-.daily-bh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
-.daily-close{all:unset;cursor:pointer;box-sizing:border-box;font:600 13px/1 var(--body);padding:6px 12px;border:1px solid #000;border-radius:999px;color:#000}
-.daily-close:hover{background:#000;color:#fff}
-.daily-close:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
-.daily-bb{flex:1;overflow:auto;padding:12px 14px 14px;font:400 14px/1.45 var(--body);color:#000}
-.daily-bb h3{margin:0 0 6px;font:600 17px/1.2 var(--display)}
-.daily-bb p{margin:0 0 8px}
-.daily-bb a{color:var(--brand-blue);font-weight:600}
-@media (max-width:1100px){
-  html body header.top .hero-top{flex-wrap:wrap}
-  .daily{flex:1 1 100%;width:100%;max-width:440px;margin-left:0}
-}
-@media (prefers-reduced-motion:reduce){.daily-inner{transition:none}}
 
 /* ===== Semainier : badge « À la une » sur l'actualité principale de chaque journée ===== */
 .ag-une-b{display:inline-block;align-self:flex-start;margin-right:6px;font:700 11px/1 var(--body);letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--brand-blue);border-radius:4px;padding:3px 6px}

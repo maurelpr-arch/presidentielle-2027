@@ -12,10 +12,9 @@
 
 /* L'agenda politique de la semaine : 7 jours glissants à partir d'aujourd'hui (heure de Paris).
    Les rendez-vous sont lus dans agenda.json. 1 à 4 rendez-vous français par jour, et au plus 1 information internationale.
-   Chaque journée met en tête son actualité principale (badge « À la une »), reprise dans la carte « L'actu du jour »
-   à droite de la grande question. Pour imposer le choix, ajouter "p":1 au rendez-vous voulu dans agenda.json ;
-   sinon : première séance du Parlement, sinon première information internationale, sinon premier candidat
-   (les mentions « éventuelle » ou « si nécessaire » passent en dernier). */
+   Chaque journée met en tête son actualité principale (badge « À la une »). Pour imposer le choix, ajouter "p":1 au
+   rendez-vous voulu dans agenda.json ; sinon : première séance du Parlement, sinon première information internationale,
+   sinon premier candidat (les mentions « éventuelle » ou « si nécessaire » passent en dernier). */
 (function(){
   var track=document.getElementById("ag-track");
   if(!track) return;
@@ -118,54 +117,10 @@
     note.textContent=txt;
   }
 
-  /* Carte à retourner « L'actu du jour », à droite de la grande question */
-  function daily(){
-    var host=document.querySelector(".hero-top");
-    if(!host||!data) return;
-    var old=host.querySelector(".daily"); if(old) old.parentNode.removeChild(old);
-    var day=parisToday(), e=une(day);
-    if(!e) return;
-    var more=!!(e.x||e.l);
-    var root=el("aside","daily"); root.setAttribute("aria-label","L’actu du jour");
-    var inner=el("div","daily-inner");
-    var front=el("div","daily-face daily-front");
-    var fl=el(more?"button":"div","daily-fbtn");
-    if(more) fl.type="button";
-    fl.appendChild(el("span","daily-kick","L’actu du jour"));
-    var ds=fmtLong.format(toUTC(day));
-    fl.appendChild(el("span","daily-date",ds.charAt(0).toUpperCase()+ds.slice(1)));
-    fl.appendChild(el("span","daily-tag",TAGS[e.c]||"Repère"));
-    fl.appendChild(el("span","daily-t",e.t));
-    if(e.q) fl.appendChild(el("span","daily-q",e.q));
-    if(more) fl.appendChild(el("span","daily-hint","Retourner la carte ↻"));
-    front.appendChild(fl); inner.appendChild(front);
-    if(more){
-      var back=el("div","daily-face daily-back"), bh=el("div","daily-bh"), close=el("button","daily-close","Fermer");
-      close.type="button";
-      bh.appendChild(el("span","daily-kick","L’actu du jour")); bh.appendChild(close);
-      var bb=el("div","daily-bb");
-      bb.appendChild(el("h3",null,e.t));
-      if(e.x) bb.appendChild(el("p",null,e.x));
-      if(e.l){var a=el("a",null,"Source : "+(e.s||"lien")+" ↗");a.href=e.l;a.target="_blank";a.rel="noopener";bb.appendChild(a);}
-      back.appendChild(bh); back.appendChild(bb); inner.appendChild(back);
-      back.inert=true; back.setAttribute("aria-hidden","true");
-      var flip=function(on){
-        root.classList.toggle("is-flipped",on);
-        front.inert=on; back.inert=!on;
-        front.setAttribute("aria-hidden",on?"true":"false"); back.setAttribute("aria-hidden",on?"false":"true");
-        (on?close:fl).focus({preventScroll:true});
-      };
-      fl.addEventListener("click",function(){flip(true);});
-      close.addEventListener("click",function(){flip(false);});
-      root.addEventListener("keydown",function(ev){ if(ev.key==="Escape"&&root.classList.contains("is-flipped")) flip(false); });
-    }
-    root.appendChild(inner); host.appendChild(root);
-  }
-
   prev.addEventListener("click",function(){offset=Math.max(0,offset-1);render();});
   next.addEventListener("click",function(){offset+=1;render();});
   now.addEventListener("click",function(){offset=0;render();track.scrollLeft=0;});
 
-  fetch("agenda.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(j){data=j;render();daily();})
+  fetch("agenda.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(j){data=j;render();})
   .catch(function(){ track.textContent=""; note.textContent="L’agenda de la semaine n’a pas pu être chargé. Réessayez dans quelques instants."; });
 })();
