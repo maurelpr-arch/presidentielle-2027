@@ -39,7 +39,10 @@ html body header.top .hero-top .hero-logo{display:block;flex:none;width:clamp(99
 
 /* ===== Titres : serif de la marque, en noir. Intertitres : sans-serif rond, en bleu du site ===== */
 html body header.top .hero-q,html body header.top>h2.eyebrow,html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-family:var(--display);font-weight:600;color:#000;text-transform:none;letter-spacing:-.005em;line-height:1.12}
-html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-size:clamp(24px,2.4vw,32px)}
+html body .edito h2,html body .partage h3,html body .auteur .role{font-size:clamp(24px,2.4vw,32px)}
+/* Titres de section (dates essentielles, candidats, chronologie, cartes à retourner) : plus gros, en noir (27 nov., 19 h) ; le sous-titre bleu reste dessous, un peu plus petit */
+html body .section-h{font-size:clamp(32px,3.3vw,46px);line-height:1.08;margin-bottom:8px}
+html body .section-h+.sub{font-size:15px}
 html body header.top>h2.eyebrow{font-size:clamp(20px,2.9vw,42px)}
 html body header.top .hero-q .hero-qm{color:var(--brand-blue)}
 html body .auteur h2{font-family:var(--display);font-weight:600;color:#000}
