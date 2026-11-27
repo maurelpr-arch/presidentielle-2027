@@ -27,15 +27,3 @@ html body .sub,html body header.top p.ag-sub{font:600 16px/1.4 var(--body);color
 html body .month h3,html body .bb h4,html body .faq .grp{font-family:var(--body);font-weight:700;color:var(--brand-blue)}
 html body .month h3{font-size:17px;letter-spacing:.06em;text-transform:uppercase}
 html body .bb h4,html body .faq .grp{font-size:16px}
-
-/* ===== Ligne électrique animée sous la marque : « les lignes bougent » ===== */
-html body header.top>.brand{position:relative;border-bottom-width:2px}
-html body header.top>.brand::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:24px;pointer-events:none;
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='24' viewBox='0 0 96 24'><path d='M0 12H18L24 12L31 2L39 22L46 4L53 20L60 12H96' fill='none' stroke='%230F3DFF' stroke-width='2.5' stroke-linejoin='miter' stroke-linecap='square'/></svg>") 0 0/96px 24px repeat-x;
-  -webkit-mask:linear-gradient(90deg,rgba(0,0,0,.3) 0%,#000 45%,rgba(0,0,0,.3) 90%) 0 0/60% 100% repeat-x;
-          mask:linear-gradient(90deg,rgba(0,0,0,.3) 0%,#000 45%,rgba(0,0,0,.3) 90%) 0 0/60% 100% repeat-x;
-  filter:drop-shadow(0 0 3px rgba(15,61,255,.65));
-  animation:courant-defile 2.4s linear infinite,courant-pulse 3.6s linear infinite}
-@keyframes courant-defile{to{background-position:96px 0}}
-@keyframes courant-pulse{to{-webkit-mask-position:60% 0;mask-position:60% 0}}
-@media (prefers-reduced-motion:reduce){html body header.top>.brand::after{animation:none;-webkit-mask:none;mask:none}}
