@@ -1,3 +1,66 @@
+/* Mosaïque : aperçus des visuels de promotion. Les images JPG de partage/ n'existent pas encore : chaque visuel est une petite page HTML (partage/visuel-*.html)
+   affichée en aperçu réduit (iframe mise à l'échelle). Quand les JPG auront été exportés dans partage/, remplacer ces aperçus par les images. */
+(function(){
+  var MAP={
+    "visuel-carre-1-la-question":["visuel-semainier-carre","Le semainier","carré",1080,1080,"Carré 1:1 · Instagram, Facebook, WhatsApp"],
+    "visuel-carre-2-500-parrainages":["visuel-chronologie-carre","La chronologie","carré",1080,1080,"Carré 1:1 · Instagram, Facebook, WhatsApp"],
+    "visuel-carre-3-les-dates":["visuel-cartes-portrait","Les cartes à retourner","portrait",1080,1350,"Portrait 4:5 · Instagram, Facebook"],
+    "visuel-story-vertical":["visuel-story-vertical","Story verticale","vertical",1080,1920,"Vertical 9:16 · stories Instagram et Facebook, statut WhatsApp"],
+    "visuel-facebook-paysage":["visuel-facebook-paysage","Publication Facebook","paysage",1200,630,"Paysage 1,9:1 · Facebook, LinkedIn"]
+  };
+  var X=["visuel-x-paysage","Le site sur X","paysage",1600,900,"Paysage 16:9 · X"];
+  function key(src){ var m=/partage\/([^\/?#]+)\.jpg/.exec(src||""); return m?m[1]:""; }
+  function frame(v){
+    var f=document.createElement("iframe"); f.className="pv"; f.src="partage/"+v[0]+".html"; f.title="Visuel « "+v[1]+" »";
+    f.setAttribute("data-w",v[3]); f.setAttribute("data-h",v[4]); f.setAttribute("loading","lazy"); f.tabIndex=-1; f.setAttribute("scrolling","no");
+    f.style.cssText="position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;background:#E4E4DF";
+    return f;
+  }
+  var frames=[];
+  function fit(f){
+    var p=f.parentNode, w=+f.getAttribute("data-w"), h=+f.getAttribute("data-h"), pw=p.clientWidth, ph=p.clientHeight; if(!pw||!ph) return;
+    var sc=Math.max(pw/w,ph/h); f.style.width=w+"px"; f.style.height=h+"px";
+    f.style.transform="translate("+((pw-w*sc)/2)+"px,"+((ph-h*sc)/2)+"px) scale("+sc+")";
+  }
+  function put(pic,v){
+    pic.textContent=""; var f=frame(v); pic.appendChild(f); frames.push(f);
+    if(window.ResizeObserver){ new ResizeObserver(function(){ fit(f); }).observe(pic); }
+    fit(f);
+  }
+  /* Cartes de la mosaïque */
+  var cards=document.querySelectorAll("#partager li.mo-img"), last=null;
+  Array.prototype.forEach.call(cards,function(li){
+    var im=li.querySelector("img"), a=li.querySelector(".mo-dl"), v=MAP[key(im?im.getAttribute("src"):(a?a.getAttribute("href"):""))];
+    if(!v) return;
+    put(li.querySelector(".mo-pic"),v);
+    if(a){ a.removeAttribute("download"); a.href="partage/"+v[0]+".html"; a.target="_blank"; a.rel="noopener"; a.textContent=v[1]+" · Voir ↗"; }
+    var k=li.querySelector(".mo-kick"); if(k) k.textContent="Visuel · "+v[2];
+    last=li;
+  });
+  if(last){
+    var c=last.cloneNode(true), pic=c.querySelector(".mo-pic"), a=c.querySelector(".mo-dl");
+    last.parentNode.insertBefore(c,last.nextSibling); put(pic,X);
+    a.href="partage/"+X[0]+".html"; a.textContent=X[1]+" · Voir ↗"; c.querySelector(".mo-kick").textContent="Visuel · "+X[2];
+  }
+  /* Liste détaillée (fenêtre « Des visuels prêts à publier ») */
+  var items=document.querySelectorAll("#mo-visuels .visuels > li"), lastLi=null;
+  Array.prototype.forEach.call(items,function(li){
+    var im=li.querySelector("img"), v=MAP[key(im?im.getAttribute("src"):"")]; if(!v) return;
+    var w=document.createElement("div"); w.className="pv-wrap"; w.style.cssText="position:relative;overflow:hidden;width:100%;aspect-ratio:"+v[3]+"/"+v[4]+";background:#E4E4DF";
+    im.parentNode.replaceChild(w,im); put(w,v);
+    var cap=li.querySelector(".cap"); if(cap){ cap.textContent=v[1]; var s=document.createElement("small"); s.textContent=v[5]; cap.appendChild(s); }
+    var acts=li.querySelector(".acts"); if(acts){ acts.textContent=""; var b=document.createElement("a"); b.className="sbtn"; b.href="partage/"+v[0]+".html"; b.target="_blank"; b.rel="noopener"; b.textContent="Voir en grand"; acts.appendChild(b); }
+    lastLi=li;
+  });
+  if(lastLi){
+    var c2=lastLi.cloneNode(true), w2=c2.querySelector(".pv-wrap"), b2=c2.querySelector(".sbtn");
+    lastLi.parentNode.insertBefore(c2,lastLi.nextSibling); w2.style.aspectRatio=X[3]+"/"+X[4]; put(w2,X);
+    c2.querySelector(".cap").firstChild.nodeValue=X[1]; c2.querySelector(".cap small").textContent=X[5]; b2.href="partage/"+X[0]+".html";
+  }
+  var sub=document.querySelector('.mo-more[data-open="mo-visuels"]'); sub=sub&&sub.parentNode.querySelector(".mo-sub");
+  if(sub) sub.textContent="Six visuels à publier : semainier, chronologie, cartes à retourner, story, Facebook et X.";
+})();
+
 /* Édito de la semaine en carte à retourner : si edito.json contient "suite" (liste de paragraphes), la carte reçoit un bouton « Lire la suite » qui ouvre le texte complet dans une fenêtre,
    comme les autres cartes. La carte est créée par agenda.js après le chargement de edito.json : on l'attend. */
 (function(){
