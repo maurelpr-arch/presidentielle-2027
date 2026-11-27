@@ -103,11 +103,13 @@
     if(mapSec) return mapSec;
     var host=track.closest("section")||track.parentNode;
     mapSec=el("section","ag-map"); mapSec.setAttribute("aria-labelledby","h-agmap");
-    var main=el("div","ag-map-main");
+    /* Titre et sous-titre en dehors de la carte, au-dessus des deux colonnes (comme les autres titres de section) */
+    var head=el("div","ag-map-head"), main=el("div","ag-map-main");
     var h=el("h3","ag-map-t"); h.id="h-agmap"; h.appendChild(document.createTextNode("Où se joue la campagne cette semaine"));
     h.appendChild(el("span","ag-map-qm"," ?"));
-    main.appendChild(h);
-    main.appendChild(el("p","ag-map-sub"));
+    head.appendChild(h);
+    head.appendChild(el("p","ag-map-sub"));
+    mapSec.appendChild(head);
     var g=el("div","ag-map-grid"); g.appendChild(el("div","ag-map-box")); g.appendChild(el("ul","ag-map-list")); main.appendChild(g);
     main.appendChild(el("p","ag-map-note","Rendez-vous publics annoncés par les candidats déclarés, les mêmes règles pour tous : un point, un ou plusieurs rendez-vous. Métropole et Corse ; les sources sont dans le détail de chaque rendez-vous du semainier."));
     mapSec.appendChild(main);

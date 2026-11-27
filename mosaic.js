@@ -1,3 +1,19 @@
+/* Bandeau défilant sous la barre noire (façon dépêches) : le texte de présentation du site défile doucement ; il se met en pause au survol
+   et reste fixe (texte entier) si le visiteur a demandé moins d'animations. La phrase courte d'index.html sert de repli sans JavaScript. */
+(function(){
+  var p=document.querySelector("p.pitch"); if(!p) return;
+  var TXT="L’Agenda Politique, c’est l’élection présidentielle de 2027 jour après jour, en un coup d’œil. L’agenda de la semaine : les réunions publiques des candidats, les séances du Parlement et une information internationale chaque jour. La carte : où se jouent les rendez-vous des candidats cette semaine. L’édito de la semaine. La chronologie de septembre 2026 à juin 2027 : dates clés, parrainages, deux tours de scrutin. Les cartes à retourner : candidats par courant politique, règles du vote, institutions, gouvernements. Actualisé chaque matin, avec ses sources, factuel et neutre : un site d’électeurs pour les électeurs.";
+  p.textContent=""; p.className="pitch ticker"; p.setAttribute("aria-label",TXT);
+  var lab=document.createElement("span"); lab.className="tk-label"; lab.setAttribute("aria-hidden","true"); lab.textContent="Le site en bref";
+  var view=document.createElement("span"); view.className="tk-view"; view.setAttribute("aria-hidden","true");
+  var tr=document.createElement("span"); tr.className="tk-track";
+  for(var i=0;i<2;i++){ var s=document.createElement("span"); s.textContent=TXT; tr.appendChild(s); }
+  view.appendChild(tr); p.appendChild(lab); p.appendChild(view);
+  function speed(){ var w=tr.scrollWidth/2; tr.style.setProperty("--tkd",Math.max(40,Math.round(w/55))+"s"); }
+  speed(); window.addEventListener("resize",speed);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(speed);
+})();
+
 /* Mosaïque : le bouton « Lire la suite » ouvre le contenu complet dans une fenêtre (les boutons de partage gardent leur fonctionnement). */
 (function(){
   /* Carte « Le site » (colonne à droite de la carte) : le début du texte complet remplit la carte, « Lire la suite » ouvre le reste. */

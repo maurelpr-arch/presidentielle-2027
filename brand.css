@@ -82,8 +82,8 @@ html body .ag-map-main{
   background-size:140px 140px,230px 230px,180px 180px;
 }
 
-/* ===== Carte des rendez-vous de la semaine (sous le semainier) : 2/3 de la largeur ; dans le tiers de droite, l'édito de la semaine (edito.json) puis la carte « Le site » (déplacée depuis la mosaïque par agenda.js ; « Les coulisses » passe en première place de la mosaïque). Les deux cartes se partagent la hauteur et leur texte la remplit (27 nov.) ===== */
-html body header.top .ag-map{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;align-items:stretch;max-width:none;margin:26px 0 8px;color:#000}
+/* ===== Carte des rendez-vous de la semaine (sous le semainier) : titre et sous-titre au-dessus (hors de la carte, comme les titres de section), puis la carte sur 2/3 de la largeur ; dans le tiers de droite, l'édito de la semaine (edito.json) puis la carte « Le site » (déplacée depuis la mosaïque par agenda.js ; « Les coulisses » passe en première place de la mosaïque). Les deux cartes se partagent la hauteur et leur texte la remplit (27 nov.) ===== */
+html body header.top .ag-map{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px 20px;align-items:stretch;max-width:none;margin:26px 0 8px;color:#000}
 html body header.top .ag-map.ag-map-solo{grid-template-columns:minmax(0,1fr)}
 html body .ag-map-main{box-sizing:border-box;min-width:0;display:flex;flex-direction:column;padding:22px 24px 18px;border:1px solid var(--line);border-radius:12px}
 .ag-map-side{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;min-width:0}
@@ -91,9 +91,10 @@ html body .ag-map-main{box-sizing:border-box;min-width:0;display:flex;flex-direc
 .ag-map-side .mo-sub{font-size:16.5px;line-height:1.5;color:#000}
 .ag-edito .ag-edito-txt{margin:0 0 12px;font:400 16.5px/1.5 var(--body);color:#000}
 .ag-edito .ag-edito-sig{margin:auto 0 0;padding-top:12px;border-top:1px solid var(--line);font:700 13px/1.3 var(--body);color:#000}
-html body header.top .ag-map-t{margin:0 0 4px;font:600 clamp(24px,2.4vw,32px)/1.12 var(--display);letter-spacing:-.005em;color:#000;text-transform:none}
+html body header.top .ag-map-head{grid-column:1/-1}
+html body header.top .ag-map-t{margin:0 0 8px;font:600 clamp(32px,3.3vw,46px)/1.08 var(--display);letter-spacing:-.005em;color:#000;text-transform:none}
 html body header.top .ag-map-qm{color:var(--brand-blue)}
-html body header.top .ag-map-sub{margin:0 0 14px;max-width:none;font:400 15px/1.45 var(--body);color:#000;text-transform:none;letter-spacing:0}
+html body header.top .ag-map-sub{margin:0;max-width:none;font:600 15px/1.4 var(--body);color:var(--brand-blue);text-transform:none;letter-spacing:0}
 .ag-map-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px 28px;align-items:center}
 .ag-map-box svg{display:block;width:100%;height:auto;overflow:visible}
 .ag-map-fr{fill:#fff;stroke:#111;stroke-width:2;stroke-linejoin:round}
@@ -112,3 +113,14 @@ html body header.top .ag-map-note{margin:auto 0 0;padding-top:12px;max-width:non
 
 /* ===== Photomaton du concepteur : sans cadre blanc, il se pose directement sur le fond papier (le blanc de l'image disparait par multiplication) ===== */
 html body .mo-portrait{border:0;background:transparent;mix-blend-mode:multiply}
+
+/* ===== Bandeau défilant « Le site en bref » sous la barre noire (27 nov., 19 h) : fond noir, étiquette bleue, texte blanc qui défile doucement (mosaic.js) ===== */
+html body header.top p.pitch.ticker{display:flex;align-items:stretch;max-width:none;margin:22px 0 0;padding:0;background:#000;color:#fff;border-radius:6px;overflow:hidden;font:500 clamp(15px,1.4vw,19px)/1.2 var(--body)}
+.tk-label{flex:none;display:flex;align-items:center;padding:12px 16px;background:var(--brand-blue);color:#fff;font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.tk-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center;-webkit-mask:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%)}
+.tk-track{display:inline-flex;flex:none;white-space:nowrap;padding:12px 0;will-change:transform;animation:tk-defile var(--tkd,90s) linear infinite}
+.tk-track>span{flex:none;padding-right:4em}
+@keyframes tk-defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+html body header.top p.pitch.ticker:hover .tk-track{animation-play-state:paused}
+@media (max-width:560px){.tk-label{padding:10px 10px;font-size:11px}}
+@media (prefers-reduced-motion:reduce){.tk-track{animation:none;white-space:normal;padding:12px 16px}.tk-track>span+span{display:none}.tk-track>span{padding-right:0}.tk-view{-webkit-mask:none;mask:none}}
