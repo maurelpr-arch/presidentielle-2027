@@ -51,7 +51,7 @@ html body header.top h2.eyebrow,html body header.top .hero,html body .mosaic,htm
 @media (max-width:900px){.topnav{justify-content:flex-start;gap:12px}.tn-links{justify-content:flex-start}}
 
 /* ===== Carte à retourner « L'actu du jour », à droite de la grande question ===== */
-.daily{flex:0 0 clamp(236px,21vw,310px);margin-left:auto;height:268px;perspective:1400px}
+.daily{flex:0 0 clamp(210px,18vw,250px);margin-left:auto;height:232px;perspective:1400px}
 .daily-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s ease}
 .daily.is-flipped .daily-inner{transform:rotateY(180deg)}
 .daily-face{position:absolute;inset:0;display:flex;flex-direction:column;border-radius:12px;background:#fff;border:1px solid #D5DAE3;border-top:5px solid var(--brand-blue);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 8px 20px rgba(19,32,59,.10)}
