@@ -1,3 +1,11 @@
+/* Menu du haut : lien « La carte » (la carte des rendez-vous est construite par agenda.js, son titre porte l'id h-agmap), placé après « La semaine ». */
+(function(){
+  var first=document.querySelector(".tn-links li"); if(!first||document.querySelector('.tn-links a[href="#h-agmap"]')) return;
+  var li=document.createElement("li"), a=document.createElement("a");
+  a.href="#h-agmap"; a.textContent="La carte"; li.appendChild(a);
+  first.parentNode.insertBefore(li,first.nextSibling);
+})();
+
 /* Bandeau défilant sous la barre noire (façon dépêches) : le texte de présentation du site défile doucement ; il se met en pause au survol
    et reste fixe (texte entier) si le visiteur a demandé moins d'animations. La phrase courte d'index.html sert de repli sans JavaScript. */
 (function(){
