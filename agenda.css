@@ -1,0 +1,69 @@
+/* ===== Titre du site, question réduite, titre « L'agenda politique de la semaine » ===== */
+html body header.top .site-title{margin:0 0 14px;font:600 clamp(40px,6vw,80px)/1.02 var(--display);letter-spacing:-.015em;color:var(--ink);text-wrap:balance}
+html body header.top .hero-q{font-size:clamp(20px,2.9vw,42px)}
+html body header.top>h2.eyebrow{margin:26px 0 0;font:700 clamp(20px,2.5vw,30px)/1.15 var(--body);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);text-wrap:balance}
+
+/* ===== Le semainier : 7 jours glissants, sur toute la largeur ===== */
+html body header.top>section.agenda{max-width:none;margin:0 0 18px}
+.ag-bar{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;margin:0 0 14px}
+.ag-sub{margin:0;font-size:15px;color:var(--muted);max-width:760px}
+.ag-nav{display:flex;gap:8px}
+.ag-btn{all:unset;box-sizing:border-box;cursor:pointer;padding:8px 14px;border:1.5px solid #000;border-radius:999px;background:#fff;color:#000;font:600 13.5px/1 var(--body);white-space:nowrap}
+.ag-btn:hover:not([disabled]){background:#000;color:#fff}
+.ag-btn[disabled]{opacity:.35;cursor:default}
+.ag-btn:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
+
+.ag-track{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;align-items:start}
+@media (max-width:1249px){
+  .ag-track{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 14px;gap:12px;-webkit-overflow-scrolling:touch}
+  .ag-day{flex:0 0 min(250px,78vw);scroll-snap-align:start}
+}
+.ag-day{min-width:0}
+.ag-head{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:4px;padding:0 2px 8px;margin-bottom:10px;border-bottom:3px solid #000;min-height:76px}
+.ag-date{display:flex;align-items:baseline;gap:8px}
+.ag-day.is-today .ag-head{border-bottom-color:var(--red)}
+.ag-dow{font:700 12.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.ag-num{font:600 34px/1 var(--display)}
+.ag-mon{font:600 14px/1 var(--body);color:var(--muted)}
+.ag-badge{background:var(--red);color:#fff;border-radius:999px;padding:3px 9px;font:700 11px/1.2 var(--body);letter-spacing:.04em}
+.ag-day.is-weekend .ag-dow{color:var(--muted)}
+.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+
+.ag-static{box-sizing:border-box;display:flex;flex-direction:column;gap:5px;width:100%;padding:10px 12px 11px;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:8px;text-align:left;color:var(--ink);
+  background-color:#E8E8E4;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='w' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.2 0 0 0 -1.05'/></filter><rect width='140' height='140' filter='url(%23w)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 1 0 0 0 -.4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+.ag-card{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:5px;width:100%;padding:10px 12px 11px;border:1px solid var(--line);border-left:4px solid var(--c);border-radius:8px;cursor:pointer;color:var(--ink);
+  background-color:#E8E8E4;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='w' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.2 0 0 0 -1.05'/></filter><rect width='140' height='140' filter='url(%23w)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n' x='0' y='0' width='100%25' height='100%25'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .22 0 0 0 0 .22 0 0 0 0 .20 1 0 0 0 -.4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+.ag-card:hover{border-color:var(--c)}
+.ag-card:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
+.ag-tag{align-self:flex-start;font:700 10.5px/1.4 var(--body);letter-spacing:.07em;text-transform:uppercase;color:var(--c);border:1px solid var(--c);border-radius:4px;padding:0 6px}
+.ag-t{font:600 16.5px/1.22 var(--display)}
+.ag-q{font-size:12.5px;line-height:1.35;color:var(--muted)}
+.ag-more{margin-top:2px;font:600 12px/1 var(--body);color:var(--ink)}
+.ag-card[aria-expanded="true"] .ag-more::after{content:"Réduire −"}
+.ag-card[aria-expanded="false"] .ag-more::after{content:"Détails +"}
+.ag-detail{margin:-4px 0 0;padding:10px 12px 11px;border:1px solid var(--line);border-top:0;border-left:4px solid var(--c);border-radius:0 0 8px 8px;background:#fff;font-size:13.5px;line-height:1.45}
+.ag-detail p{margin:0 0 8px}
+.ag-detail a{font-weight:600;font-size:12.5px}
+.ag-detail[hidden]{display:none}
+.ag-li-open .ag-card{border-radius:8px 8px 0 0}
+.c-candidat{--c:#0B3D91}
+.c-parlement{--c:#0B3D91}
+.c-international{--c:#B3141F}
+.c-international .ag-t{color:var(--c)}
+.ag-static .ag-t{font-size:15px}
+.ag-key{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0 0 12px;font-size:13px;color:var(--muted)}
+.ag-key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--c)}
+.ag-note{margin:12px 0 0;font-size:13px;color:var(--muted);max-width:900px}
+@media (prefers-reduced-motion:reduce){.ag-track{scroll-behavior:auto}}
+
+/* Les paragraphes de l'en-tête sont à 18 px par défaut : on les ramène à la taille voulue. */
+html body header.top p.ag-sub{font-size:15px;line-height:1.45;color:var(--muted)}
+html body header.top p.ag-key{font-size:13px;line-height:1.4;color:var(--muted)}
+html body header.top p.ag-note{font-size:13px;line-height:1.45;color:var(--muted)}
+html body header.top .ag-detail p{margin:0 0 8px;font-size:13.5px;line-height:1.45;color:var(--ink)}
