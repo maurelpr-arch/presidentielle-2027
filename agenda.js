@@ -12,14 +12,14 @@
 
 /* L'agenda politique de la semaine : 7 jours glissants à partir d'aujourd'hui (heure de Paris).
    Les rendez-vous sont lus dans agenda.json. 1 à 4 rendez-vous français par jour, et au plus 1 information internationale.
-   Chaque journée met en tête son actualité principale (badge « À la une »). Pour imposer le choix, ajouter "p":1 au
-   rendez-vous voulu dans agenda.json ; sinon : première séance du Parlement, sinon première information internationale,
-   sinon premier candidat (les mentions « éventuelle » ou « si nécessaire » passent en dernier). */
+   Une information internationale, quand il y en a une, est toujours en tête de la journée (en rouge) et porte le badge « À la une ».
+   Sinon, l'actualité principale : "p":1 dans agenda.json impose le choix ; sinon première séance du Parlement, sinon
+   premier candidat (les mentions « éventuelle » ou « si nécessaire » passent en dernier). */
 (function(){
   var track=document.getElementById("ag-track");
   if(!track) return;
   var TAGS={candidat:"Candidat",parlement:"Parlement",international:"International"};
-  var data=null, offset=0, ORDER=["candidat","parlement","international"], UNE_ORDER=["parlement","international","candidat"];
+  var data=null, offset=0, ORDER=["candidat","parlement","international"], UNE_ORDER=["international","parlement","candidat"];
   var WEAK=/éventuelle|si nécessaire/i;
   var prev=document.getElementById("ag-prev"), next=document.getElementById("ag-next"), now=document.getElementById("ag-now"), note=document.getElementById("ag-note");
 
@@ -48,12 +48,14 @@
     return list[0]||null;
   }
 
-  /* Rendez-vous du jour : l'actualité principale d'abord, puis les autres */
+  /* Rendez-vous du jour : l'information internationale d'abord, puis l'actualité principale, puis les autres */
   function eventsFor(day){
     var u=une(day);
     var list=eventsRaw(day).slice().sort(function(a,b){return ORDER.indexOf(a.c)-ORDER.indexOf(b.c);});
     if(u){ var at=list.indexOf(u); if(at>0){ list.splice(at,1); list.unshift(u); } }
-    return list;
+    /* Une information internationale, quand il y en a une, est toujours en tête de la journée (en rouge). */
+    var intl=list.filter(function(e){return e.c==="international";}), rest=list.filter(function(e){return e.c!=="international";});
+    return intl.concat(rest);
   }
 
   function tagNodes(e,isUne){
