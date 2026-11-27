@@ -2,10 +2,11 @@
 :root{--brand-blue:#0B3D91;--electric:#0F3DFF}
 /* ===== Marque : macaron + titre, détaché en haut =====
    --t = hauteur de la ligne du titre. Dans la police du titre, la base des lettres est à .72 t du haut de la ligne et le haut des
-   majuscules à peu près au haut de la ligne. Le disque du macaron fait 54/58 de son cadre : cadre = .76 t donne un disque de .71 t,
-   posé sur la base des lettres et au niveau du haut des majuscules (marge négative de .014 t pour compenser les 2/58 du cadre). */
+   majuscules à peu près au haut de la ligne : hauteur des lettres = .713 t, centre des lettres = .3635 t.
+   Le disque du macaron fait 54/58 de son cadre. Disque voulu = .77 t (un peu plus grand que les lettres, à peine) :
+   cadre = .77 t / (54/58) = .827 t, centré sur les lettres : marge haute = .3635 t - .4135 t = -.05 t. */
 html body header.top>.brand{--t:clamp(40px,7vw,92px);max-width:none;display:flex;align-items:flex-start;gap:clamp(14px,2.2vw,26px);margin:18px 0 6px;padding:0 0 18px;border-bottom:4px solid #000}
-.brand-mark{flex:none;width:calc(var(--t)*.76);height:calc(var(--t)*.76);margin-top:calc(var(--t)*-.014);display:block}
+.brand-mark{flex:none;width:calc(var(--t)*.827);height:calc(var(--t)*.827);margin-top:calc(var(--t)*-.05);display:block}
 .brand-txt{min-width:0}
 .brand-dot{fill:var(--electric)}
 html body header.top .brand-name{margin:0;font:600 var(--t)/1 var(--display);letter-spacing:-.015em;color:#000}
