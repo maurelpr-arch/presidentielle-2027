@@ -1,5 +1,7 @@
 /* Mosaïque : le bouton « Lire la suite » ouvre le contenu complet dans une fenêtre (les boutons de partage gardent leur fonctionnement). */
 (function(){
+  /* Carte « Le site » (colonne à droite de la carte) : le début du texte complet remplit la carte, « Lire la suite » ouvre le reste. */
+  (function(){ var ob=document.querySelector('.mo-more[data-open="mo-edito"]'), full=document.getElementById("mo-edito"), p=full&&full.querySelector("p"), sub=ob&&ob.parentNode.querySelector(".mo-sub"); if(p&&sub) sub.textContent=p.textContent; })();
   var btns=document.querySelectorAll(".mo-more");
   Array.prototype.forEach.call(document.querySelectorAll("[data-goto]"),function(g){ g.addEventListener("click",function(){ var b=document.querySelector('.mo-more[data-open="'+g.getAttribute("data-goto")+'"]'); if(b) b.click(); }); });
   if(!btns.length||!document.createElement("dialog").showModal) return;

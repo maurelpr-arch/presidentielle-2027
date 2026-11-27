@@ -26,8 +26,8 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
    (Une taille automatique par étirement + aspect-ratio ne marche pas : le logo reprend sa taille naturelle.)
    Le logo est centré (marges auto) dans la colonne vide à droite du texte, au milieu du bloc de texte en hauteur (mesuré : centres
    alignés à 0,0 px). Titre descendu : la règle de hero.css (`header.top > .hero.hero`, margin:0 0 10px) l'emportait sur la marge de 18 px de la
-   version précédente (qui n'a donc jamais été appliquée) ; on la bat avec le même doublement de classe. Marge 24 px + 6 px de la marque
-   + 10 px d'espacement = 40 px sous le filet noir (16 px avant). */
+   version précédente (qui n'a donc jamais été appliquée) ; on la bat avec le même doublement de classe. Marge 24 px + 6 px de la
+   marque + 10 px d'espacement = 40 px sous le filet noir (16 px avant). */
 html body header.top>.hero.hero{margin-top:24px}
 html body header.top .hero-top{justify-content:flex-start;gap:0}
 html body header.top .hero-top .hero-text{flex:0 1 auto}
@@ -77,13 +77,14 @@ html body .ag-map-main{
   background-size:140px 140px,230px 230px,180px 180px;
 }
 
-/* ===== Carte des rendez-vous de la semaine (sous le semainier) : 2/3 de la largeur ; dans le tiers de droite, l'édito de la semaine (edito.json) puis la carte « Le site » (déplacée depuis la mosaïque par agenda.js ; « Les coulisses » passe en première place de la mosaïque) ===== */
+/* ===== Carte des rendez-vous de la semaine (sous le semainier) : 2/3 de la largeur ; dans le tiers de droite, l'édito de la semaine (edito.json) puis la carte « Le site » (déplacée depuis la mosaïque par agenda.js ; « Les coulisses » passe en première place de la mosaïque). Les deux cartes se partagent la hauteur et leur texte la remplit (27 nov.) ===== */
 html body header.top .ag-map{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;align-items:stretch;max-width:none;margin:26px 0 8px;color:#000}
 html body header.top .ag-map.ag-map-solo{grid-template-columns:minmax(0,1fr)}
 html body .ag-map-main{box-sizing:border-box;min-width:0;display:flex;flex-direction:column;padding:22px 24px 18px;border:1px solid var(--line);border-radius:12px}
 .ag-map-side{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;min-width:0}
-.ag-map-side .mo-card{flex:0 0 auto;min-height:0}
-.ag-edito .ag-edito-txt{margin:0 0 12px;font:400 15.5px/1.5 var(--body);color:#000}
+.ag-map-side .mo-card{flex:1 1 auto;min-height:0}
+.ag-map-side .mo-sub{font-size:16.5px;line-height:1.5;color:#000}
+.ag-edito .ag-edito-txt{margin:0 0 12px;font:400 16.5px/1.5 var(--body);color:#000}
 .ag-edito .ag-edito-sig{margin:auto 0 0;padding-top:12px;border-top:1px solid var(--line);font:700 13px/1.3 var(--body);color:#000}
 html body header.top .ag-map-t{margin:0 0 4px;font:600 clamp(24px,2.4vw,32px)/1.12 var(--display);letter-spacing:-.005em;color:#000;text-transform:none}
 html body header.top .ag-map-qm{color:var(--brand-blue)}
