@@ -233,6 +233,7 @@ html body footer.foot a{color:#fff;text-decoration:underline;text-underline-offs
 <link rel="stylesheet" href="defiler.css">
 <link rel="stylesheet" href="hero.css">
 <link rel="stylesheet" href="partage.css">
+<link rel="stylesheet" href="agenda.css">
 </head>
 <body>
 <div class="wrap">
@@ -246,6 +247,7 @@ html body footer.foot a{color:#fff;text-decoration:underline;text-underline-offs
     <section class="hero" aria-labelledby="h-hero">
       <div class="hero-top">
         <div class="hero-text">
+          <h1 class="site-title">L’Agenda Politique</h1>
           <h2 class="hero-q" id="h-hero">Qui sera le nouveau président<br>ou la nouvelle présidente de la République en&nbsp;2027<span class="hero-qm">&nbsp;?</span></h2>
           <p class="hero-sub"><b>32 candidats et candidates déclarés, 8 femmes, 24 hommes</b>, et plus que quelques mois pour collecter les 500 parrainages d’élus nécessaires à une candidature officielle. <span class="hero-go">Le compte à rebours est lancé.</span></p>
         </div>
@@ -262,7 +264,24 @@ html body footer.foot a{color:#fff;text-decoration:underline;text-underline-offs
       </div>
     </section>
 
-    <div class="eyebrow">L’Agenda Politique</div>
+    <h2 class="eyebrow" id="h-agenda">L’agenda politique de la semaine</h2>
+    <section class="agenda" aria-labelledby="h-agenda">
+      <div class="ag-bar">
+        <div>
+          <p class="ag-sub">Les 7 prochains jours : réunions publiques des candidats, séances du Parlement et, quand il y en a une, une grande information internationale. Cliquez sur un rendez-vous pour le détail.</p>
+          <p class="ag-key"><span class="c-candidat"><i></i>Politique française : candidats et Parlement</span><span class="c-international"><i></i>International</span></p>
+        </div>
+        <div class="ag-nav">
+          <button type="button" class="ag-btn" id="ag-prev" aria-label="Semaine précédente">← Précédente</button>
+          <button type="button" class="ag-btn" id="ag-now">Aujourd’hui</button>
+          <button type="button" class="ag-btn" id="ag-next" aria-label="Semaine suivante">Suivante →</button>
+        </div>
+      </div>
+      <div class="ag-track" id="ag-track" aria-live="polite"></div>
+      <p class="ag-note" id="ag-note"></p>
+      <noscript><p class="ag-note">L’agenda de la semaine demande JavaScript pour s’afficher.</p></noscript>
+    </section>
+
 
     <div class="edito-row">
       <section class="edito" aria-labelledby="h-edito">
@@ -390,5 +409,6 @@ html body footer.foot a{color:#fff;text-decoration:underline;text-underline-offs
 <script src="defiler.js"></script>
 <script src="hero.js"></script>
 <script src="partage.js"></script>
+<script src="agenda.js"></script>
 </body>
 </html>
