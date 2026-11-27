@@ -1,3 +1,15 @@
+/* Bandeau noir du haut : le macaron A à point bleu (copie du macaron de la marque, même lettre, même police) remplace l'ancien logo.
+   Sur fond noir, le disque noir reçoit un liseré blanc pour rester visible. */
+(function(){
+  var mk=document.querySelector(".brand-mark"), old=document.querySelector("#majbox .maj-logo");
+  if(!mk||!old) return;
+  var c=mk.cloneNode(true), disc=c.querySelector("circle");
+  c.setAttribute("class","maj-logo maj-macaron");
+  c.removeAttribute("role"); c.removeAttribute("aria-label"); c.setAttribute("aria-hidden","true"); c.setAttribute("focusable","false");
+  if(disc){ disc.setAttribute("stroke","#fff"); disc.setAttribute("stroke-width","2.5"); }
+  old.parentNode.replaceChild(c,old);
+})();
+
 /* L'agenda politique de la semaine : 7 jours glissants à partir d'aujourd'hui (heure de Paris).
    Les rendez-vous sont lus dans agenda.json. 1 à 4 rendez-vous français par jour, et au plus 1 information internationale.
    Chaque journée met en tête son actualité principale (badge « À la une »), reprise dans la carte « L'actu du jour »
