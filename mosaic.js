@@ -1,5 +1,5 @@
 /* Mosaïque : aperçus des visuels de promotion. Les images JPG de partage/ n'existent pas encore : chaque visuel est une petite page HTML (partage/visuel-*.html)
-   affichée en aperçu réduit (iframe mise à l'échelle). Quand les JPG auront été exportés dans partage/, remplacer ces aperçus par les images. */
+   affichée en aperçu réduit (iframe mise à l'échelle, visuel entier visible, centré sur fond papier). Quand les JPG auront été exportés dans partage/, remplacer ces aperçus par les images. */
 (function(){
   var MAP={
     "visuel-carre-1-la-question":["visuel-semainier-carre","Le semainier","carré",1080,1080,"Carré 1:1 · Instagram, Facebook, WhatsApp"],
@@ -16,14 +16,13 @@
     f.style.cssText="position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none;background:#E4E4DF";
     return f;
   }
-  var frames=[];
   function fit(f){
     var p=f.parentNode, w=+f.getAttribute("data-w"), h=+f.getAttribute("data-h"), pw=p.clientWidth, ph=p.clientHeight; if(!pw||!ph) return;
-    var sc=Math.max(pw/w,ph/h); f.style.width=w+"px"; f.style.height=h+"px";
+    var sc=Math.min(pw/w,ph/h); f.style.width=w+"px"; f.style.height=h+"px";
     f.style.transform="translate("+((pw-w*sc)/2)+"px,"+((ph-h*sc)/2)+"px) scale("+sc+")";
   }
   function put(pic,v){
-    pic.textContent=""; var f=frame(v); pic.appendChild(f); frames.push(f);
+    pic.textContent=""; pic.style.background="#E4E4DF"; var f=frame(v); pic.appendChild(f);
     if(window.ResizeObserver){ new ResizeObserver(function(){ fit(f); }).observe(pic); }
     fit(f);
   }
