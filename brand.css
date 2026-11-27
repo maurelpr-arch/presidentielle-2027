@@ -18,9 +18,15 @@ html body header.top p.brand-sub{display:flex;align-items:center;gap:12px;margin
 html body header.top>section.hero{margin-top:18px}
 html body header.top .hero-top .hero-logo{width:clamp(84px,9.5vw,140px)}
 
-/* ===== Titres et intertitres en bleu électrique ===== */
-html body header.top .hero-q,html body header.top .hero-q .hero-qm,html body header.top>h2.eyebrow,html body .section-h,html body .month h3,html body .edito h2,html body .faq .grp,html body .bb h4{color:var(--brand-blue)}
-html body .partage h3{color:var(--brand-blue)}
+/* ===== Titres : serif de la marque, en noir. Intertitres : sans-serif rond, en bleu électrique ===== */
+html body header.top .hero-q,html body header.top>h2.eyebrow,html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-family:var(--display);font-weight:600;color:#000;text-transform:none;letter-spacing:-.005em;line-height:1.12}
+html body header.top>h2.eyebrow,html body .section-h,html body .edito h2,html body .partage h3,html body .auteur .role{font-size:clamp(24px,2.4vw,32px)}
+html body header.top .hero-q .hero-qm{color:var(--brand-blue)}
+html body .auteur h2{font-family:var(--display);font-weight:600;color:#000}
+html body .sub,html body header.top p.ag-sub{font:600 16px/1.4 var(--body);color:var(--brand-blue);text-transform:none;letter-spacing:0}
+html body .month h3,html body .bb h4,html body .faq .grp{font-family:var(--body);font-weight:700;color:var(--brand-blue)}
+html body .month h3{font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+html body .bb h4,html body .faq .grp{font-size:16px}
 
 /* ===== Ligne électrique animée sous la marque : « les lignes bougent » ===== */
 html body header.top>.brand{position:relative;border-bottom-width:2px}
