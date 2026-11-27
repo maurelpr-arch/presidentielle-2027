@@ -5,10 +5,10 @@
 @media (max-width:560px){.mo-grid{grid-template-columns:minmax(0,1fr)}}
 .mo-card{position:relative;display:flex;flex-direction:column;min-height:300px;min-width:0;background:#fff;border:1px solid var(--line);border-top:4px solid #000;overflow:hidden}
 .mo-art{padding:20px 22px 18px}
-.mo-kick{display:block;font:700 12px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--brand-blue,#0F3DFF)}
+.mo-kick{display:block;font:700 12px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--brand-blue,#0B3D91)}
 html body .mo-art h3{margin:10px 0 10px;font:600 clamp(24px,2.1vw,30px)/1.12 var(--display);color:#000;text-wrap:balance}
 .mo-sub{margin:0;font:400 16px/1.45 var(--body);color:var(--muted)}
-.mo-more{all:unset;box-sizing:border-box;margin-top:auto;padding-top:14px;cursor:pointer;font:700 14px/1.2 var(--body);color:var(--brand-blue,#0F3DFF);border-top:1px solid var(--line)}
+.mo-more{all:unset;box-sizing:border-box;margin-top:auto;padding-top:14px;cursor:pointer;font:700 14px/1.2 var(--body);color:var(--brand-blue,#0B3D91);border-top:1px solid var(--line)}
 .mo-more:hover{text-decoration:underline}
 .mo-more:focus-visible{outline:3px solid #F2B90F;outline-offset:3px}
 .mo-sub+.mo-more{margin-top:auto}
@@ -18,7 +18,7 @@ html body .mo-art h3{margin:10px 0 10px;font:600 clamp(24px,2.1vw,30px)/1.12 var
 .mo-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .mo-cap{display:flex;flex-direction:column;gap:3px;padding:10px 14px 12px;background:#fff}
 .mo-dl{font:700 14px/1.3 var(--body);color:#000;text-decoration:none}
-.mo-dl:hover{color:var(--brand-blue,#0F3DFF);text-decoration:underline}
+.mo-dl:hover{color:var(--brand-blue,#0B3D91);text-decoration:underline}
 .mo-dl:focus-visible{outline:3px solid #F2B90F;outline-offset:2px}
 .mo-full{display:none}
 
@@ -36,4 +36,4 @@ html body .mo-art h3{margin:10px 0 10px;font:600 clamp(24px,2.1vw,30px)/1.12 var
 .mo-db p{margin:0 0 12px;font-size:16px;line-height:1.55;color:var(--ink)}
 .mo-portrait{float:right;width:150px;max-width:34%;height:auto;margin:0 0 10px 18px;border:1px solid var(--line)}
 .mo-db .mo-full.partage,.mo-db .mo-share{margin:0;max-width:none}
-html body .mo-db .sub{font:600 16px/1.4 var(--body);color:var(--brand-blue,#0F3DFF)}
+html body .mo-db .sub{font:600 16px/1.4 var(--body);color:#000}
