@@ -101,12 +101,20 @@
     if(mapSec) return mapSec;
     var host=track.closest("section")||track.parentNode;
     mapSec=el("section","ag-map"); mapSec.setAttribute("aria-labelledby","h-agmap");
+    var main=el("div","ag-map-main");
     var h=el("h3","ag-map-t"); h.id="h-agmap"; h.appendChild(document.createTextNode("Où se joue la campagne cette semaine"));
-    var qm=el("span","ag-map-qm"," ?"); h.appendChild(qm);
-    mapSec.appendChild(h);
-    mapSec.appendChild(el("p","ag-map-sub"));
-    var g=el("div","ag-map-grid"); g.appendChild(el("div","ag-map-box")); g.appendChild(el("ul","ag-map-list")); mapSec.appendChild(g);
-    mapSec.appendChild(el("p","ag-map-note","Rendez-vous publics annoncés par les candidats déclarés, les mêmes règles pour tous : un point, un ou plusieurs rendez-vous. Métropole et Corse ; les sources sont dans le détail de chaque rendez-vous du semainier."));
+    h.appendChild(el("span","ag-map-qm"," ?"));
+    main.appendChild(h);
+    main.appendChild(el("p","ag-map-sub"));
+    var g=el("div","ag-map-grid"); g.appendChild(el("div","ag-map-box")); g.appendChild(el("ul","ag-map-list")); main.appendChild(g);
+    main.appendChild(el("p","ag-map-note","Rendez-vous publics annoncés par les candidats déclarés, les mêmes règles pour tous : un point, un ou plusieurs rendez-vous. Métropole et Corse ; les sources sont dans le détail de chaque rendez-vous du semainier."));
+    mapSec.appendChild(main);
+    /* Colonne de droite (un tiers) : les cartes « Le site » et « Les coulisses », reprises de la mosaïque ; leurs boutons « Lire la suite » gardent leur fonctionnement. */
+    var side=el("ul","ag-map-side"), cards=document.querySelectorAll("#partager .mo-card.mo-art");
+    ["Le site","Les coulisses"].forEach(function(n){
+      for(var i=0;i<cards.length;i++){ var k=cards[i].querySelector(".mo-kick"); if(k&&k.textContent.trim()===n){ side.appendChild(cards[i]); break; } }
+    });
+    if(side.children.length) mapSec.appendChild(side); else mapSec.className+=" ag-map-solo";
     host.parentNode.insertBefore(mapSec,host.nextSibling);
     return mapSec;
   }
