@@ -111,6 +111,9 @@
     head.appendChild(el("p","ag-map-sub"));
     mapSec.appendChild(head);
     var g=el("div","ag-map-grid"); g.appendChild(el("div","ag-map-box")); g.appendChild(el("ul","ag-map-list")); main.appendChild(g);
+    var rd=el("div","ag-map-read"); rd.appendChild(el("p","ag-map-stat"));
+    rd.appendChild(el("p","ag-map-how","Comment lire la carte : chaque point est un lieu où au moins un candidat déclaré tient une réunion publique ou un meeting cette semaine. Un chiffre dans le point indique plusieurs rendez-vous regroupés dans la même zone ; le trait relie le point à son étiquette. Tous les candidats sont traités de la même façon : même point, même taille, aucun nom sur la carte (les noms sont dans la liste de droite et dans le semainier, avec la source). La carte ne mesure ni l’audience ni le poids d’un candidat : elle montre seulement où se passent les rendez-vous annoncés."));
+    main.appendChild(rd);
     main.appendChild(el("p","ag-map-note","Rendez-vous publics annoncés par les candidats déclarés, les mêmes règles pour tous : un point, un ou plusieurs rendez-vous. Métropole et Corse ; les sources sont dans le détail de chaque rendez-vous du semainier."));
     mapSec.appendChild(main);
     /* Colonne de droite (un tiers) : en haut l'édito de la semaine (edito.json), en bas la carte « Le site » reprise de la mosaïque ;
@@ -161,14 +164,25 @@
       for(var k=0;k<cl.length;k++){ if(Math.hypot(cl[k].x-it.x,cl[k].y-it.y)<34){ var c=cl[k]; c.x=(c.x*c.n+it.x)/(c.n+1); c.y=(c.y*c.n+it.y)/(c.n+1); c.n++; if(c.names.indexOf(it.v)<0) c.names.push(it.v); c.dates.push(it.date); return; } }
       cl.push({x:it.x,y:it.y,n:1,names:[it.v],dates:[it.date]});
     });
+    /* Étiquettes : à droite ou à gauche du point, décalées en hauteur si elles se touchent, et reliées au point par un trait */
     var labs=cl.map(function(c){
       var r=c.n===1?11:Math.min(14+c.n*2.5,30), side=(c.x<400||c.x>560)?"l":"r";
       var l1=c.names.length>2?c.names.slice(0,2).join(", ")+" +"+(c.names.length-2):c.names.join(", ");
       var l2=c.n===1?c.dates[0]:c.n+" rendez-vous";
-      return {c:c,r:r,side:side,x:side==="l"?c.x-r-12:c.x+r+12,y:c.y,l1:l1,l2:l2};
-    }).sort(function(p,q){return p.y-q.y;});
-    ["l","r"].forEach(function(sd){ var last=-1e9; labs.forEach(function(L){ if(L.side!==sd) return; if(L.y<last+52) L.y=last+52; last=L.y; }); });
-    var svg='<svg viewBox="-80 0 940 890" role="img" aria-label="Carte de la France métropolitaine : '+esc(total)+' rendez-vous de candidats cette semaine, détaillés dans la liste" focusable="false"><path d="'+FRPATH+'" class="ag-map-fr"/>';
+      return {c:c,r:r,side:side,y:c.y,l1:l1,l2:l2};
+    }).sort(function(p,q){return p.c.y-q.c.y;});
+    var lastY={l:-1e9,r:-1e9}, GAP=58;
+    labs.forEach(function(L){
+      var pref=L.side, oth=pref==="l"?"r":"l";
+      if(L.c.y-lastY[pref]<GAP && L.c.y-lastY[oth]>=GAP) L.side=oth;
+      L.y=Math.max(L.c.y,lastY[L.side]+GAP); lastY[L.side]=L.y;
+      L.x=L.side==="l"?L.c.x-L.r-46:L.c.x+L.r+46;
+    });
+    var svg='<svg viewBox="-110 0 980 890" role="img" aria-label="Carte de la France métropolitaine : '+esc(total)+' rendez-vous de candidats cette semaine, détaillés dans la liste" focusable="false"><path d="'+FRPATH+'" class="ag-map-fr"/>';
+    labs.forEach(function(L){
+      var c=L.c, dx=L.side==="l"?-8:8;
+      svg+='<path d="M'+c.x.toFixed(0)+','+c.y.toFixed(0)+' L'+(L.x+dx).toFixed(0)+','+(L.y-9).toFixed(0)+'" class="ag-map-lead"/>';
+    });
     labs.forEach(function(L){
       var c=L.c, anchor=L.side==="l"?"end":"start";
       svg+='<circle cx="'+c.x.toFixed(0)+'" cy="'+c.y.toFixed(0)+'" r="'+(L.r+9)+'" class="ag-map-halo"/><circle cx="'+c.x.toFixed(0)+'" cy="'+c.y.toFixed(0)+'" r="'+L.r+'" class="ag-map-dot"/>';
@@ -177,6 +191,11 @@
     });
     svg+='</svg>';
     box.innerHTML=svg;
+    /* Texte sous la carte : chiffres de la semaine (calculés) */
+    var stat=s.querySelector(".ag-map-stat"), villes=[], best=null;
+    rows.forEach(function(r){ r.names.forEach(function(v){ if(villes.indexOf(v)<0) villes.push(v); }); });
+    for(i=0;i<7;i++){ var dd=addDays(start,i), nn=eventsRaw(dd).filter(function(e){return e.c==="candidat";}).length; if(nn&&(!best||nn>best.n)){ var d2=toUTC(dd); best={n:nn,lab:fmtDow.format(d2).replace(".","")+" "+d2.getUTCDate()+" "+fmtMon.format(d2)}; } }
+    stat.textContent=total?("Cette semaine : "+total+" rendez-vous de candidats dans "+villes.length+" lieu"+(villes.length>1?"x":"")+", répartis sur "+rows.length+" jour"+(rows.length>1?"s":"")+(best?". Le jour le plus chargé : "+best.lab+" ("+best.n+" rendez-vous)":"")+"."):"Aucun rendez-vous de candidat annoncé cette semaine pour l’instant.";
   }
 
   function render(){
