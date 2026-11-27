@@ -109,12 +109,27 @@
     var g=el("div","ag-map-grid"); g.appendChild(el("div","ag-map-box")); g.appendChild(el("ul","ag-map-list")); main.appendChild(g);
     main.appendChild(el("p","ag-map-note","Rendez-vous publics annoncés par les candidats déclarés, les mêmes règles pour tous : un point, un ou plusieurs rendez-vous. Métropole et Corse ; les sources sont dans le détail de chaque rendez-vous du semainier."));
     mapSec.appendChild(main);
-    /* Colonne de droite (un tiers) : les cartes « Le site » et « Les coulisses », reprises de la mosaïque ; leurs boutons « Lire la suite » gardent leur fonctionnement. */
-    var side=el("ul","ag-map-side"), cards=document.querySelectorAll("#partager .mo-card.mo-art");
-    ["Le site","Les coulisses"].forEach(function(n){
-      for(var i=0;i<cards.length;i++){ var k=cards[i].querySelector(".mo-kick"); if(k&&k.textContent.trim()===n){ side.appendChild(cards[i]); break; } }
-    });
-    if(side.children.length) mapSec.appendChild(side); else mapSec.className+=" ag-map-solo";
+    /* Colonne de droite (un tiers) : en haut l'édito de la semaine (edito.json), en bas la carte « Le site » reprise de la mosaïque ;
+       son bouton « Lire la suite » garde son fonctionnement. La carte « Les coulisses » (le concepteur du site) prend la première place de la mosaïque. */
+    var side=el("ul","ag-map-side"), cards=document.querySelectorAll("#partager .mo-card.mo-art"), grid=document.querySelector("#partager .mo-grid"), coul=null;
+    for(var i=0;i<cards.length;i++){
+      var k=cards[i].querySelector(".mo-kick"), n=k?k.textContent.trim():"";
+      if(n==="Le site") side.appendChild(cards[i]); else if(n==="Les coulisses") coul=cards[i];
+    }
+    if(grid&&coul) grid.insertBefore(coul,grid.firstChild);
+    mapSec.appendChild(side);
+    if(!side.children.length) mapSec.className+=" ag-map-solo";
+    fetch("edito.json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(j){
+      if(!j||!j.texte) return;
+      var li=el("li","mo-card mo-art ag-edito");
+      li.appendChild(el("span","mo-kick",j.kick||"L’édito de la semaine"));
+      if(j.titre) li.appendChild(el("h3",null,j.titre));
+      li.appendChild(el("p","ag-edito-txt",j.texte));
+      var sg=(j.signe||"")+(j.date?(j.signe?" · ":"")+new Intl.DateTimeFormat("fr-FR",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(toUTC(j.date)):"");
+      if(sg) li.appendChild(el("p","ag-edito-sig",sg));
+      side.insertBefore(li,side.firstChild);
+      mapSec.className=mapSec.className.replace(" ag-map-solo","");
+    }).catch(function(){});
     host.parentNode.insertBefore(mapSec,host.nextSibling);
     return mapSec;
   }
